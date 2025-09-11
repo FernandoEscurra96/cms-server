@@ -46,6 +46,22 @@ app.listen(PORT, () => {
 
 
 
+
+// Minificar CSS en <style>...</style>
+function minifyCss(html) {
+    return html.replace(/<style>([\s\S]*?)<\/style>/gi, (match, css) => {
+        // Eliminar saltos de línea y espacios innecesarios
+        let minified = css
+            .replace(/\s+/g, ' ')          // Quitar espacios múltiples
+            .replace(/\s*{\s*/g, '{')      // Espacios antes/después de {
+            .replace(/\s*}\s*/g, '}')      // Espacios antes/después de }
+            .replace(/\s*:\s*/g, ':')      // Espacios antes/después de :
+            .replace(/\s*;\s*/g, ';')      // Espacios antes/después de ;
+            .replace(/;}/g, '}');          // Quitar ; innecesarios antes de }
+        return `<style>${minified}</style>`;
+    });
+}
+
 // Endpoint para obtener HTML con datos incrustados
 // Endpoint para obtener HTML con datos incrustados (sin JS)
 app.get('/api/html', (req, res) => {
@@ -60,6 +76,7 @@ app.get('/api/html', (req, res) => {
         // Reemplazar los placeholders directamente con datos del producto
 
         let cleanHtml = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+        cleanHtml = minifyCss(cleanHtml);
 
         let finalHtml = cleanHtml
             .replace('<div class="product-category"></div>', `<div class="product-category">${productData.category}</div>`)
@@ -76,6 +93,5 @@ app.get('/api/html', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Servidor corriendo en http://localhost:${PORT}`);
-});
+
+
