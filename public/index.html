@@ -340,5 +340,34 @@
     </div>
 </div>
 
+<script>
+// Función para cargar datos del producto desde el endpoint
+async function fetchProduct() {
+    try {
+        const response = await fetch('/api/product');
+        const data = await response.json();
+        renderProduct(data);
+    } catch (err) {
+        console.error("Error cargando el producto:", err);
+    }
+}
 
+// Renderizar el producto en el HTML
+function renderProduct(data) {
+    document.querySelector('.product-category').textContent = data.category;
+    document.querySelector('.product-title').textContent = data.title;
+    document.querySelector('.product-description').textContent = data.description;
+    document.querySelector('.price-original').textContent = data.priceOriginal;
+    document.querySelector('.price-current').textContent = data.priceCurrent;
+    document.querySelector('.price-discount').textContent = data.priceDiscount;
+
+    const buyButton = document.querySelector('.buy-button');
+    buyButton.onclick = () => {
+        window.location.href = data.buyLink;
+    };
+}
+
+// Cargar datos al iniciar la página
+fetchProduct();
+</script>
 
