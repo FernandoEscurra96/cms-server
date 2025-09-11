@@ -58,7 +58,10 @@ app.get('/api/html', (req, res) => {
         }
         console.log(html);
         // Reemplazar los placeholders directamente con datos del producto
-        let finalHtml = html
+
+        let cleanHtml = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+
+        let finalHtml = cleanHtml
             .replace('<div class="product-category"></div>', `<div class="product-category">${productData.category}</div>`)
             .replace('<h1 class="product-title"></h1>', `<h1 class="product-title">${productData.title}</h1>`)
             .replace('<p class="product-description"></p>', `<p class="product-description">${productData.description}</p>`)
