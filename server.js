@@ -95,3 +95,61 @@ app.get('/api/html', (req, res) => {
 
 
 
+
+
+
+
+
+// ================================
+// COMPETITOR DATA (index2.html)
+// ================================
+let competitorData = {
+  competitors: [
+    {
+      letter: "A",
+      name: "COMPETIDOR A",
+      question: "¿Por qué pierde?",
+      stats: [
+        "Batería térmica real 40% menor en tests independientes: tras 4h en oficina, el agua ya cae a temperatura ambiente",
+        "Su mayor pecado: 31% de reviewers en Amazon reportan fugas tras 3 semanas",
+        "Plástico reciclado de baja calidad, sin certificado BPA",
+        "1 de cada 9 unidades presenta defectos de fabricación (Amazon US, abril 2024)",
+        "Cuesta $20 menos, pero a los 9 meses el gasto en repuestos y absorción de olores triplica el 'ahorro' inicial"
+      ]
+    },
+    {
+      letter: "B",
+      name: "COMPETIDOR B",
+      question: "¿Por qué es una trampa?",
+      stats: [
+        "Texto ejemplo B1",
+        "Texto ejemplo B2"
+      ]
+    }
+  ]
+};
+
+
+
+// ================================
+// ENDPOINTS COMPETIDORES (index2)
+// ================================
+
+// Endpoint para obtener todos los competidores
+app.get('/api/competitors', (req, res) => {
+    res.json(competitorData);
+});
+
+// Endpoint para actualizar todos los competidores
+app.post('/api/competitors', (req, res) => {
+    const newData = req.body;
+
+    // Validar que venga la estructura correcta (opcional)
+    if (!newData.competitors || !Array.isArray(newData.competitors)) {
+        return res.status(400).json({ error: "El JSON debe incluir un array 'competitors'" });
+    }
+
+    competitorData = { ...competitorData, ...newData };
+
+    res.json({ message: "Competidores actualizados", competitorData });
+});
