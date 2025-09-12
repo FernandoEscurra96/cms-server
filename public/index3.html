@@ -1,0 +1,140 @@
+<body>
+  <section class="faq-section">
+    <div class="container">
+      <h2 class="section-title">Preguntas Frecuentes</h2>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+          <!-- FAQs se inyectarán dinámicamente -->
+          <details class="faq-item">
+            <summary class="faq-question"></summary>
+            <div class="faq-answer"></div>
+          </details>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+// ==============================
+// Fetch FAQs (index3.html)
+// ==============================
+async function fetchFaq() {
+    try {
+        const response = await fetch('/api/faq');
+        const data = await response.json();
+        renderFaq(data);
+    } catch (err) {
+        console.error("Error cargando las FAQs:", err);
+    }
+}
+
+// Renderizar FAQs en el HTML
+function renderFaq(data) {
+    const container = document.querySelector('.faq-section .container .row .col-lg-10');
+
+    // Título dinámico
+    document.querySelector('.faq-section .section-title').textContent = data.title;
+
+    // Limpiar preguntas previas
+    container.innerHTML = "";
+
+    // Agregar preguntas y respuestas
+    data.faqs.forEach(faq => {
+        const faqItem = document.createElement("details");
+        faqItem.classList.add("faq-item");
+
+        faqItem.innerHTML = `
+            <summary class="faq-question">${faq.question}</summary>
+            <div class="faq-answer">${faq.answer}</div>
+        `;
+
+        container.appendChild(faqItem);
+    });
+}
+
+// Cargar FAQs al iniciar la página
+fetchFaq();
+
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #00b4d8;
+      --secondary-color: #0077b6;
+      --accent-color: #90e0ef;
+      --dark-color: #03045e;
+      --light-bg: #f8f9fa;
+      --gradient-1: linear-gradient(135deg, #00b4d8, #0077b6);
+      --gradient-2: linear-gradient(45deg, #90e0ef, #00b4d8);
+      --text-dark: #212529;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+      line-height: 1.6 !important;
+      color: var(--text-dark) !important;
+      overflow-x: hidden !important;
+      background: #ffffff !important;
+    }
+
+    .faq-section {
+      padding: 100px 0 !important;
+      background: white !important;
+    }
+
+    .faq-item {
+      background: #f8f9fa !important;
+      margin-bottom: 20px !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+    }
+
+    .faq-question {
+      background: var(--gradient-1) !important;
+      color: white !important;
+      padding: 25px 30px !important;
+      cursor: pointer !important;
+      font-weight: 600 !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      transition: all 0.3s ease !important;
+      list-style: none !important;
+    }
+
+    .faq-question:hover {
+      background: var(--secondary-color) !important;
+    }
+
+    .faq-answer {
+      padding: 30px !important;
+      line-height: 1.7 !important;
+      color: var(--text-dark) !important;
+      border-top: 1px solid #dee2e6 !important;
+    }
+
+    .section-title {
+      font-size: 3rem !important;
+      font-weight: 700 !important;
+      margin-bottom: 3rem !important;
+      text-align: center !important;
+      color: var(--dark-color) !important;
+      position: relative !important;
+    }
+
+    .section-title::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -10px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: 80px !important;
+      height: 4px !important;
+      background: var(--gradient-1) !important;
+      border-radius: 2px !important;
+    }
+  </style>
+</body>

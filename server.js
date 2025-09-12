@@ -95,7 +95,57 @@ app.get('/api/html', (req, res) => {
 
 
 
+// Endpoint para devolver el HTML de index2.html con los competidores incrustados
+app.get('/api/html2', (req, res) => {
+    const htmlPath = path.join(__dirname, 'public/index2.html');
+    console.log("api/html2");
+    console.log(htmlPath);
 
+    fs.readFile(htmlPath, 'utf8', (err, html) => {
+        if (err) {
+            return res.status(500).json({ error: "No se pudo leer el archivo index2.html" });
+        }
+
+        // 1. Remover cualquier <script> ... </script>
+        let cleanHtml = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+
+        // 2. Minificar CSS en una sola línea
+        cleanHtml = minifyCss(cleanHtml);
+
+        // 3. Renderizar competidores con datos JSON
+        let competitorsHtml = competitorData.competitors.map(comp => `
+            <div class="competitor-section">
+                <div class="competitor-content">
+                    <div class="competitor-header">
+                        <div class="competitor-letter">${comp.letter}</div>
+                        <h3 class="competitor-name">${comp.name}</h3>
+                        <p class="competitor-question">${comp.question}</p>
+                    </div>
+                    <div class="stats-container">
+                        <div class="stat-block">
+                            ${comp.stats.map(stat => `<p class="stat-text">${stat}</p>`).join("")}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `).join("");
+
+        // 4. Reemplazar el contenido de .analysis-section
+        let finalHtml = cleanHtml.replace(
+            /<section class="analysis-section">[\s\S]*<\/section>/,
+            `<section class="analysis-section">
+                <div class="section-intro">
+                    <h2 class="section-title">ANÁLISIS DEVASTADOR</h2>
+                    <p class="section-subtitle">Datos reales que revelan por qué la competencia fracasa estrepitosamente</p>
+                </div>
+                ${competitorsHtml}
+            </section>`
+        );
+
+        // 5. Retornar solo HTML dentro de JSON
+        res.json({ html: finalHtml });
+    });
+});
 
 
 
@@ -152,4 +202,83 @@ app.post('/api/competitors', (req, res) => {
     competitorData = { ...competitorData, ...newData };
 
     res.json({ message: "Competidores actualizados", competitorData });
+});
+
+
+
+
+let faqData = {
+    title: "Preguntas Frecuentes",
+    faqs: [
+        {
+            question: "¿Es realmente tan fácil de limpiar como promete?",
+            answer: "Sí, la Owala FreeSip Insulated 2025 fue diseñada para facilitar una higiene total..."
+        },
+        {
+            question: "¿Cómo funciona exactamente la boquilla FreeSip?",
+            answer: "La boquilla FreeSip permite beber de dos formas: inclinar la botella..."
+        }
+    ]
+};
+
+// Obtener FAQs
+app.get('/api/faq', (req, res) => {
+    res.json(faqData);
+});
+
+// Actualizar FAQs
+app.post('/api/faq', (req, res) => {
+    const newData = req.body;
+
+    if (!newData.faqs || !Array.isArray(newData.faqs)) {
+        return res.status(400).json({ error: "El JSON debe incluir un array 'faqs'" });
+    }
+
+    faqData = { ...faqData, ...newData };
+
+    res.json({ message: "FAQ actualizado", faqData });
+});
+
+
+
+app.get('/api/html3', (req, res) => {
+    const htmlPath = path.join(__dirname, 'public/index3.html');
+    console.log("api/html3");
+
+    fs.readFile(htmlPath, 'utf8', (err, html) => {
+        if (err) {
+            return res.status(500).json({ error: "No se pudo leer el archivo index3.html" });
+        }
+
+        // 1. Remover <script> ... </script>
+        let cleanHtml = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+
+        // 2. Minificar CSS
+        cleanHtml = minifyCss(cleanHtml);
+
+        // 3. Renderizar FAQs
+        let faqItems = faqData.faqs.map(faq => `
+            <details class="faq-item">
+                <summary class="faq-question">${faq.question}</summary>
+                <div class="faq-answer">${faq.answer}</div>
+            </details>
+        `).join("");
+
+        // 4. Reemplazar el bloque <section class="faq-section">
+        let finalHtml = cleanHtml.replace(
+            /<section class="faq-section">[\s\S]*<\/section>/,
+            `<section class="faq-section">
+                <div class="container">
+                    <h2 class="section-title">${faqData.title}</h2>
+                    <div class="row">
+                        <div class="col-lg-10 mx-auto">
+                            ${faqItems}
+                        </div>
+                    </div>
+                </div>
+            </section>`
+        );
+
+        res.json({ html: finalHtml });
+    });
 });
