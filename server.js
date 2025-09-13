@@ -250,6 +250,10 @@ let faqData = {
             "Un hallazgo importante fue la mejora en la conservación de la freidora, ya que el uso regular del papel evitó la acumulación...",
             "En conclusión, el Cecofry Paper Pack superó ampliamente las expectativas en cuanto a limpieza, seguridad y versatilidad..."
         ]
+    },
+    conclusion: {
+        title: "Conclusión",
+        text: "El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario."
     }
 };
 
@@ -374,6 +378,21 @@ app.get('/api/html3', (req, res) => {
         cleanHtml = cleanHtml.replace(
             /<div class="content">[\s\S]*?<\/div>/,
             findingsSection
+        );
+
+        // 7. Renderizar Conclusion
+        let conclusionSection = `
+            <div class="Conclusion-content">
+                <h2 class="Conclusion-title">${faqData.conclusion.title}</h2>
+                <div class="Conclusion">
+                    <div class="Conclusion-text">${faqData.conclusion.text}</div>
+                </div>
+            </div>
+        `;
+
+        cleanHtml = cleanHtml.replace(
+            /<div class="Conclusion-content">[\s\S]*?<\/div>/,
+            conclusionSection
         );
 
         // 7. Respuesta final

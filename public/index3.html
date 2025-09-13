@@ -13,25 +13,21 @@
             
             <div class="finding">
                 <div class="finding-text">
-                    Durante el periodo de prueba de tres meses, el Cecotec Accesorios de Papel para Freidora de Aire Cecofry Paper Pack demostró ser un recurso esencial para cualquier usuario de freidoras de aire. De las 80 unidades testeadas, el <span class="highlight">96% de los usuarios</span> reportaron una reducción significativa del tiempo dedicado a la limpieza, pasando de un promedio de <span class="highlight">10 minutos a solo 2 minutos</span> por uso. El papel mostró una resistencia sobresaliente a altas temperaturas, soportando sin problemas sesiones de cocinado de hasta <span class="highlight">220°C</span>. No se detectaron residuos de papel quemado ni transferencias de sabor a los alimentos, lo que asegura una experiencia culinaria limpia y saludable.
                 </div>
             </div>
             
             <div class="finding">
                 <div class="finding-text">
-                    Los usuarios destacaron la <span class="highlight">versatilidad del producto</span>, utilizándolo no solo para freír, sino también para hornear pequeñas porciones de pasteles, recalentar pizza y cocinar galletas. La forma circular del papel se adapta perfectamente a cestas de diferentes tamaños, y su borde elevado ayuda a contener jugos y grasas, minimizando derrames. El material utilizado es <span class="highlight">biodegradable y libre de BPA</span>, lo que refuerza el compromiso de Cecotec con la sostenibilidad y la seguridad del consumidor.
                 </div>
             </div>
             
             <div class="finding">
                 <div class="finding-text">
-                    Un hallazgo importante fue la <span class="highlight">mejora en la conservación de la freidora</span>, ya que el uso regular del papel evitó la acumulación de residuos y grasas en la cesta y la resistencia. Esto prolonga la vida útil del electrodoméstico y reduce la necesidad de limpiezas profundas. Además, el tamaño del pack (<span class="highlight">150 piezas</span>) es ideal para un uso frecuente, proporcionando hasta <span class="highlight">cinco meses de uso diario</span> sin necesidad de reabastecimiento.
                 </div>
             </div>
             
             <div class="finding">
                 <div class="finding-text">
-                    En conclusión, el <span class="highlight">Cecofry Paper Pack superó ampliamente las expectativas</span> en cuanto a limpieza, seguridad, facilidad de uso y versatilidad, convirtiéndose en un accesorio esencial no solo para quienes buscan practicidad, sino también para los que valoran la higiene y el cuidado de sus electrodomésticos.
                 </div>
             </div>
         </div>
@@ -75,6 +71,16 @@
     </div>
   </section>
 
+<div class="Conclusion-content">
+    <h2 class="Conclusion-title">Conclusion</h2>
+    
+    <div class="Conclusion">
+        <div class="Conclusion-text">
+            <!-- Texto dinámico desde JSON -->
+        </div>
+    </div>
+</div>
+
 <script>
 async function fetchFaqData() {
     try {
@@ -84,6 +90,7 @@ async function fetchFaqData() {
         renderFaqs(data);
         renderPricing(data.pricing);
         renderFindings(data.findings);
+        renderConclusion(data.conclusion);
     } catch (err) {
         console.error("Error cargando los datos:", err);
     }
@@ -136,6 +143,12 @@ function renderFindings(findings) {
             </div>
         `).join("")}
     `;
+}
+
+// Renderizar Conclusion
+function renderConclusion(conclusion) {
+    document.querySelector(".Conclusion-title").textContent = conclusion.title;
+    document.querySelector(".Conclusion-text").textContent = conclusion.text;
 }
 
 // Cargar datos al iniciar la página
@@ -366,9 +379,12 @@ fetchFaqData();
         .content {
             padding: 40px!important;
         }
+        .Conclusion-content {
+            padding: 40px!important;
+        }
 
 
-                .findings-title {
+        .findings-title {
             font-size: 1.8em!important;
             color: #2c3e50!important;
             margin-bottom: 30px!important;
@@ -450,6 +466,77 @@ fetchFaqData();
         }
         
         .finding-text {
+            line-height: 1.6!important;
+            font-size: 1.05em!important;
+            margin-right: 50px!important;
+            text-align: justify!important;
+        }
+
+
+         .Conclusion-title {
+            font-size: 1.8em!important;
+            color: #2c3e50!important;
+            margin-bottom: 30px!important;
+            text-align: center!important;
+            position: relative!important;
+            padding-bottom: 15px!important;
+        }
+        
+        .Conclusion-title::after {
+            content: ''!important;
+            position: absolute!important;
+            bottom: 0!important;
+            left: 50%!important;
+            transform: translateX(-50%)!important;
+            width: 60px!important;
+            height: 3px!important;
+            background: linear-gradient(90deg, #ff6b6b, #ffd93d)!important;
+            border-radius: 2px!important;
+        }
+        .Conclusion {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)!important;
+            margin: 25px 0!important;
+            border-radius: 20px!important;
+            padding: 25px!important;
+            color: white!important;
+            position: relative!important;
+            overflow: hidden!important;
+            transform: translateX(0)!important;
+            transition: all 0.3s ease!important;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3)!important;
+        }
+        
+        .Conclusion:nth-child(even) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)!important;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3)!important;
+        }
+        
+        .Conclusion:nth-child(3n) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)!important;
+            box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3)!important;
+        }
+        
+        .Conclusion:hover {
+            transform: translateX(10px)!important;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2)!important;
+        }
+        
+        .Conclusion::before {
+            content: ''!important;
+            position: absolute!important;
+            top: 0!important;
+            left: 0!important;
+            width: 5px!important;
+            height: 100%!important;
+            background: rgba(255,255,255,0.5)!important;
+            transition: width 0.3s ease!important;
+        }
+        
+        .Conclusion:hover::before {
+            width: 100%!important;
+            opacity: 0.1!important;
+        }
+        .Conclusion-text {
             line-height: 1.6!important;
             font-size: 1.05em!important;
             margin-right: 50px!important;
