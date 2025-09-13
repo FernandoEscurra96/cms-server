@@ -213,7 +213,7 @@ app.post('/api/competitors', (req, res) => {
 let faqData = {
     introduction: {
         title: "Productos Premium",
-        subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia , SON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia ,SON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
+        subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
         ctaText: "Comprar Ahora",
         ctaLink: "#productos"
     },
@@ -221,11 +221,11 @@ let faqData = {
     faqs: [
         {
             question: "¿Es realmente tan fácil de limpiar como promete?",
-            answer: "Sí, la Owala FreeSip Insulated 2025 fue diseñada para facilitar una higiene total. Todas las partes principales pueden desmontarse fácilmente y colocarse en el lavavajillas sin riesgo de deformación."
+            answer: "Sí, la Owala FreeSip Insulated 2025 fue diseñada para facilitar una higiene total..."
         },
         {
             question: "¿Cómo funciona exactamente la boquilla FreeSip?",
-            answer: "La boquilla FreeSip permite beber de dos formas: inclinar la botella para grandes sorbos a través de una abertura ancha, o mantenerla vertical y sorber a través del popote integrado."
+            answer: "La boquilla FreeSip permite beber de dos formas: inclinar la botella..."
         }
     ],
     pricing: {
@@ -241,6 +241,15 @@ let faqData = {
         ],
         ctaText: "Comprar Ahora",
         ctaLink: "#"
+    },
+    findings: {
+        title: "📊 Hallazgos Principales",
+        key_findings: [
+            "Durante el periodo de prueba de tres meses, el Cecotec Accesorios de Papel para Freidora de Aire Cecofry Paper Pack demostró ser un recurso esencial...",
+            "Los usuarios destacaron la versatilidad del producto, utilizándolo no solo para freír, sino también para hornear...",
+            "Un hallazgo importante fue la mejora en la conservación de la freidora, ya que el uso regular del papel evitó la acumulación...",
+            "En conclusión, el Cecofry Paper Pack superó ampliamente las expectativas en cuanto a limpieza, seguridad y versatilidad..."
+        ]
     }
 };
 
@@ -297,11 +306,7 @@ app.get('/api/html3', (req, res) => {
                 </div>
             </section>
         `;
-
-        cleanHtml = cleanHtml.replace(
-            /<section class="introduction">[\s\S]*?<\/section>/,
-            introSection
-        );
+        cleanHtml = cleanHtml.replace(/<section class="introduction">[\s\S]*?<\/section>/, introSection);
 
         // 4. Renderizar FAQs
         let faqItems = faqData.faqs.map(faq => `
@@ -323,15 +328,10 @@ app.get('/api/html3', (req, res) => {
                 </div>
             </section>
         `;
-
-        cleanHtml = cleanHtml.replace(
-            /<section class="faq-section">[\s\S]*<\/section>/,
-            faqSection
-        );
+        cleanHtml = cleanHtml.replace(/<section class="faq-section">[\s\S]*<\/section>/, faqSection);
 
         // 5. Renderizar Pricing
         let pricingFeatures = faqData.pricing.unique_features.map(f => `<li>${f}</li>`).join("");
-
         let pricingSection = `
             <section class="pricing" id="precio">
                 <div class="container">
@@ -340,26 +340,31 @@ app.get('/api/html3', (req, res) => {
                         <div class="pricing-content">
                             <div class="price">${faqData.pricing.price}</div>
                             <div class="price-subtitle">${faqData.pricing.subtitle}</div>
-                            
-                            <ul class="features-list">
-                                ${pricingFeatures}
-                            </ul>
-                            
-                            <a href="${faqData.pricing.ctaLink}" class="cta-button">
-                                ${faqData.pricing.ctaText}
-                            </a>
+                            <ul class="features-list">${pricingFeatures}</ul>
+                            <a href="${faqData.pricing.ctaLink}" class="cta-button">${faqData.pricing.ctaText}</a>
                         </div>
                     </div>
                 </div>
             </section>
         `;
+        cleanHtml = cleanHtml.replace(/<section class="pricing"[\s\S]*?<\/section>/, pricingSection);
 
-        cleanHtml = cleanHtml.replace(
-            /<section class="pricing"[\s\S]*?<\/section>/,
-            pricingSection
-        );
+        // 6. Renderizar Findings
+        let findingsItems = faqData.findings.key_findings.map(text => `
+            <div class="finding">
+                <div class="finding-text">${text}</div>
+            </div>
+        `).join("");
 
-        // 6. Retornar solo HTML dentro del JSON
+        let findingsSection = `
+            <div class="content">
+                <h2 class="findings-title">${faqData.findings.title}</h2>
+                ${findingsItems}
+            </div>
+        `;
+        cleanHtml = cleanHtml.replace(/<div class="content">[\s\S]*<\/div>/, findingsSection);
+
+        // 7. Respuesta final
         res.json({ html: cleanHtml });
     });
 });
