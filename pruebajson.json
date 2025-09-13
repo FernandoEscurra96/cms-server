@@ -1,0 +1,9 @@
+{
+"model": "gpt-4",
+"messages": [
+{ "role": "system", "content": "Eres un asistente de marketing y redactor útil y conciso." },
+{ "role": "user", "content": "crea un articulo para owala freesip insulated 2025 con el siguiente formato {'title': , 'introduction': minimo 400 palabras , 'analysis': { 'test_period': , 'units_tested': , 'key_findings': minimo 400 palabras[] }, 'market_data': { 'amazon_sales_evolution': [ { 'quarter': , 'sales': , 'rating': , 'devoluciones': } ], 'unique_features': minimo 400 palabras [] }, 'faqs': minimo 400 palabras[ { 'question': , 'answer': } ]" }
+],
+"max_tokens": 6651,
+"temperature": 0.7
+}
