@@ -306,7 +306,10 @@ app.get('/api/html3', (req, res) => {
                 </div>
             </section>
         `;
-        cleanHtml = cleanHtml.replace(/<section class="introduction">[\s\S]*?<\/section>/, introSection);
+        cleanHtml = cleanHtml.replace(
+            /<section class="introduction">[\s\S]*?<\/section>/,
+            introSection
+        );
 
         // 4. Renderizar FAQs
         let faqItems = faqData.faqs.map(faq => `
@@ -328,7 +331,10 @@ app.get('/api/html3', (req, res) => {
                 </div>
             </section>
         `;
-        cleanHtml = cleanHtml.replace(/<section class="faq-section">[\s\S]*<\/section>/, faqSection);
+        cleanHtml = cleanHtml.replace(
+            /<section class="faq-section">[\s\S]*?<\/section>/,
+            faqSection
+        );
 
         // 5. Renderizar Pricing
         let pricingFeatures = faqData.pricing.unique_features.map(f => `<li>${f}</li>`).join("");
@@ -347,7 +353,10 @@ app.get('/api/html3', (req, res) => {
                 </div>
             </section>
         `;
-        cleanHtml = cleanHtml.replace(/<section class="pricing"[\s\S]*?<\/section>/, pricingSection);
+        cleanHtml = cleanHtml.replace(
+            /<section class="pricing"[\s\S]*?<\/section>/,
+            pricingSection
+        );
 
         // 6. Renderizar Findings
         let findingsItems = faqData.findings.key_findings.map(text => `
@@ -362,7 +371,10 @@ app.get('/api/html3', (req, res) => {
                 ${findingsItems}
             </div>
         `;
-        cleanHtml = cleanHtml.replace(/<div class="content">[\s\S]*<\/div>/, findingsSection);
+        cleanHtml = cleanHtml.replace(
+            /<div class="content">[\s\S]*?<\/div>/,
+            findingsSection
+        );
 
         // 7. Respuesta final
         res.json({ html: cleanHtml });
