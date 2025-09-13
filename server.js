@@ -283,6 +283,12 @@ app.post('/api/faq', (req, res) => {
 
 
 
+//const fs = require('fs');
+//const path = require('path');
+const cheerio = require('cheerio');
+
+// Suponiendo que faqData ya está definido con introduction, faqs, pricing, findings, conclusion
+
 app.get('/api/html3', (req, res) => {
     const htmlPath = path.join(__dirname, 'public/index3.html');
     console.log("api/html3");
@@ -292,110 +298,70 @@ app.get('/api/html3', (req, res) => {
             return res.status(500).json({ error: "No se pudo leer el archivo index3.html" });
         }
 
-        // 1. Remover <script> ... </script>
-        let cleanHtml = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
+        // 1. Remover cualquier <script> ... </script>
+        html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
 
-        // 2. Minificar CSS
-        cleanHtml = minifyCss(cleanHtml);
+        // 2. Minificar CSS (si tienes función minifyCss)
+        html = minifyCss(html);
 
-        // 3. Renderizar Introducción
-        let introSection = `
-            <section class="introduction">
-                <div class="introduction-content">
-                    <h1>${faqData.introduction.title}</h1>
-                    <p>${faqData.introduction.subtitle}</p>
-                    <a href="${faqData.introduction.ctaLink}" class="cta-button">
-                        ${faqData.introduction.ctaText}
-                    </a>
+        // 3. Cargar HTML en Cheerio
+        const $ = cheerio.load(html);
+
+        // 4. Renderizar Introducción
+        const intro = faqData.introduction;
+        const $intro = $('.introduction');
+        $intro.find('h1').text(intro.title);
+        $intro.find('p').text(intro.subtitle);
+        const $cta = $intro.find('.cta-button');
+        $cta.text(intro.ctaText);
+        $cta.attr('href', intro.ctaLink);
+
+        // 5. Renderizar FAQs
+        const $faqContainer = $('.faq-section .col-lg-10');
+        $faqContainer.empty(); // limpiar contenido anterior
+        faqData.faqs.forEach(faq => {
+            const faqItem = `
+                <details class="faq-item">
+                    <summary class="faq-question">${faq.question}</summary>
+                    <div class="faq-answer">${faq.answer}</div>
+                </details>
+            `;
+            $faqContainer.append(faqItem);
+        });
+        $('.faq-section .section-title').text(faqData.title);
+
+        // 6. Renderizar Pricing
+        const pricing = faqData.pricing;
+        const $pricing = $('.pricing');
+        $pricing.find('.section-title').text(pricing.title);
+        $pricing.find('.price').text(pricing.price);
+        $pricing.find('.price-subtitle').text(pricing.subtitle);
+        $pricing.find('.features-list').empty();
+        pricing.unique_features.forEach(f => {
+            $pricing.find('.features-list').append(`<li>${f}</li>`);
+        });
+        $pricing.find('.cta-button').text(pricing.ctaText).attr('href', pricing.ctaLink);
+
+        // 7. Renderizar Findings
+        const findings = faqData.findings;
+        const $findings = $('.content');
+        $findings.empty();
+        $findings.append(`<h2 class="findings-title">${findings.title}</h2>`);
+        findings.key_findings.forEach(text => {
+            $findings.append(`
+                <div class="finding">
+                    <div class="finding-text">${text}</div>
                 </div>
-            </section>
-        `;
-        cleanHtml = cleanHtml.replace(
-            /<section class="introduction">[\s\S]*?<\/section>/,
-            introSection
-        );
+            `);
+        });
 
-        // 4. Renderizar FAQs
-        let faqItems = faqData.faqs.map(faq => `
-            <details class="faq-item">
-                <summary class="faq-question">${faq.question}</summary>
-                <div class="faq-answer">${faq.answer}</div>
-            </details>
-        `).join("");
+        // 8. Renderizar Conclusion
+        const conclusion = faqData.conclusion;
+        const $conclusion = $('.Conclusion-content');
+        $conclusion.find('.Conclusion-title').text(conclusion.title);
+        $conclusion.find('.Conclusion-text').html(conclusion.text);
 
-        let faqSection = `
-            <section class="faq-section">
-                <div class="container">
-                    <h2 class="section-title">${faqData.title}</h2>
-                    <div class="row">
-                        <div class="col-lg-10 mx-auto">
-                            ${faqItems}
-                        </div>
-                    </div>
-                </div>
-            </section>
-        `;
-        cleanHtml = cleanHtml.replace(
-            /<section class="faq-section">[\s\S]*?<\/section>/,
-            faqSection
-        );
-
-        // 5. Renderizar Pricing
-        let pricingFeatures = faqData.pricing.unique_features.map(f => `<li>${f}</li>`).join("");
-        let pricingSection = `
-            <section class="pricing" id="precio">
-                <div class="container">
-                    <h2 class="section-title">${faqData.pricing.title}</h2>
-                    <div class="pricing-container">
-                        <div class="pricing-content">
-                            <div class="price">${faqData.pricing.price}</div>
-                            <div class="price-subtitle">${faqData.pricing.subtitle}</div>
-                            <ul class="features-list">${pricingFeatures}</ul>
-                            <a href="${faqData.pricing.ctaLink}" class="cta-button">${faqData.pricing.ctaText}</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        `;
-        cleanHtml = cleanHtml.replace(
-            /<section class="pricing"[\s\S]*?<\/section>/,
-            pricingSection
-        );
-
-        // 6. Renderizar Findings
-        let findingsItems = faqData.findings.key_findings.map(text => `
-            <div class="finding">
-                <div class="finding-text">${text}</div>
-            </div>
-        `).join("");
-
-        let findingsSection = `
-            <div class="content">
-                <h2 class="findings-title">${faqData.findings.title}</h2>
-                ${findingsItems}
-            </div>
-        `;
-        cleanHtml = cleanHtml.replace(
-            /<div class="content">[\s\S]*?<\/div>/,
-            findingsSection
-        );
-
-        // 7. Renderizar Conclusion
-        let conclusionSection = `
-            <div class="Conclusion-content">
-                <h2 class="Conclusion-title">${faqData.conclusion.title}</h2>
-                <div class="Conclusion">
-                    <div class="Conclusion-text">${faqData.conclusion.text}</div>
-                </div>
-            </div>
-        `;
-
-        cleanHtml = cleanHtml.replace(
-            /<div class="Conclusion-content">[\s\S]*?<\/div>/,
-            conclusionSection
-        );
-
-        // 7. Respuesta final
-        res.json({ html: cleanHtml });
+        // 9. Devolver HTML final en JSON
+        res.json({ html: $.html() });
     });
 });
