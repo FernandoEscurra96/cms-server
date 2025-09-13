@@ -207,33 +207,48 @@ app.post('/api/competitors', (req, res) => {
 
 
 
+// ==============================
+// Datos iniciales FAQ + Introduction
+// ==============================
 let faqData = {
+    introduction: {
+        title: "Productos Premium",
+        subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
+        ctaText: "Comprar Ahora",
+        ctaLink: "#productos"
+    },
     title: "Preguntas Frecuentes",
     faqs: [
         {
             question: "¿Es realmente tan fácil de limpiar como promete?",
-            answer: "Sí, la Owala FreeSip Insulated 2025 fue diseñada para facilitar una higiene total..."
+            answer: "Sí, la Owala FreeSip Insulated 2025 fue diseñada para facilitar una higiene total. Todas las partes principales pueden desmontarse fácilmente y colocarse en el lavavajillas sin riesgo de deformación."
         },
         {
             question: "¿Cómo funciona exactamente la boquilla FreeSip?",
-            answer: "La boquilla FreeSip permite beber de dos formas: inclinar la botella..."
+            answer: "La boquilla FreeSip permite beber de dos formas: inclinar la botella para grandes sorbos a través de una abertura ancha, o mantenerla vertical y sorber a través del popote integrado."
         }
     ]
 };
 
-// Obtener FAQs
+// ==============================
+// Endpoint para obtener FAQs
+// ==============================
 app.get('/api/faq', (req, res) => {
     res.json(faqData);
 });
 
-// Actualizar FAQs
+// ==============================
+// Endpoint para actualizar FAQs + Introduction
+// ==============================
 app.post('/api/faq', (req, res) => {
     const newData = req.body;
 
+    // Validar que existan las FAQs
     if (!newData.faqs || !Array.isArray(newData.faqs)) {
         return res.status(400).json({ error: "El JSON debe incluir un array 'faqs'" });
     }
 
+    // Mezclar data nueva con la existente
     faqData = { ...faqData, ...newData };
 
     res.json({ message: "FAQ actualizado", faqData });
@@ -256,7 +271,25 @@ app.get('/api/html3', (req, res) => {
         // 2. Minificar CSS
         cleanHtml = minifyCss(cleanHtml);
 
-        // 3. Renderizar FAQs
+        // 3. Renderizar Introducción
+        let introSection = `
+            <section class="introduction">
+                <div class="introduction-content">
+                    <h1>${faqData.introduction.title}</h1>
+                    <p>${faqData.introduction.subtitle}</p>
+                    <a href="${faqData.introduction.ctaLink}" class="cta-button">
+                        ${faqData.introduction.ctaText}
+                    </a>
+                </div>
+            </section>
+        `;
+
+        cleanHtml = cleanHtml.replace(
+            /<section class="introduction">[\s\S]*?<\/section>/,
+            introSection
+        );
+
+        // 4. Renderizar FAQs
         let faqItems = faqData.faqs.map(faq => `
             <details class="faq-item">
                 <summary class="faq-question">${faq.question}</summary>
@@ -264,10 +297,8 @@ app.get('/api/html3', (req, res) => {
             </details>
         `).join("");
 
-        // 4. Reemplazar el bloque <section class="faq-section">
-        let finalHtml = cleanHtml.replace(
-            /<section class="faq-section">[\s\S]*<\/section>/,
-            `<section class="faq-section">
+        let faqSection = `
+            <section class="faq-section">
                 <div class="container">
                     <h2 class="section-title">${faqData.title}</h2>
                     <div class="row">
@@ -276,9 +307,15 @@ app.get('/api/html3', (req, res) => {
                         </div>
                     </div>
                 </div>
-            </section>`
+            </section>
+        `;
+
+        cleanHtml = cleanHtml.replace(
+            /<section class="faq-section">[\s\S]*<\/section>/,
+            faqSection
         );
 
-        res.json({ html: finalHtml });
+        // 5. Retornar solo HTML dentro del JSON
+        res.json({ html: cleanHtml });
     });
 });
