@@ -213,7 +213,7 @@ app.post('/api/competitors', (req, res) => {
 let faqData = {
     introduction: {
         title: "Productos Premium",
-        subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
+        subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia , SON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia ,SON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
         ctaText: "Comprar Ahora",
         ctaLink: "#productos"
     },
@@ -227,7 +227,21 @@ let faqData = {
             question: "¿Cómo funciona exactamente la boquilla FreeSip?",
             answer: "La boquilla FreeSip permite beber de dos formas: inclinar la botella para grandes sorbos a través de una abertura ancha, o mantenerla vertical y sorber a través del popote integrado."
         }
-    ]
+    ],
+    pricing: {
+        title: "Inversión en tu Futuro",
+        price: "$299",
+        subtitle: "Pago único - Valor de por vida",
+        unique_features: [
+            "Acceso completo a todas las funciones",
+            "Actualizaciones gratuitas de por vida",
+            "Soporte prioritario 24/7",
+            "Garantía de satisfacción 30 días",
+            "Integración con todas las plataformas"
+        ],
+        ctaText: "Comprar Ahora",
+        ctaLink: "#"
+    }
 };
 
 // ==============================
@@ -315,7 +329,37 @@ app.get('/api/html3', (req, res) => {
             faqSection
         );
 
-        // 5. Retornar solo HTML dentro del JSON
+        // 5. Renderizar Pricing
+        let pricingFeatures = faqData.pricing.unique_features.map(f => `<li>${f}</li>`).join("");
+
+        let pricingSection = `
+            <section class="pricing" id="precio">
+                <div class="container">
+                    <h2 class="section-title">${faqData.pricing.title}</h2>
+                    <div class="pricing-container">
+                        <div class="pricing-content">
+                            <div class="price">${faqData.pricing.price}</div>
+                            <div class="price-subtitle">${faqData.pricing.subtitle}</div>
+                            
+                            <ul class="features-list">
+                                ${pricingFeatures}
+                            </ul>
+                            
+                            <a href="${faqData.pricing.ctaLink}" class="cta-button">
+                                ${faqData.pricing.ctaText}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        cleanHtml = cleanHtml.replace(
+            /<section class="pricing"[\s\S]*?<\/section>/,
+            pricingSection
+        );
+
+        // 6. Retornar solo HTML dentro del JSON
         res.json({ html: cleanHtml });
     });
 });

@@ -7,6 +7,28 @@
       </div>
   </section>
 
+  <section class="pricing" id="precio">
+    <div class="container">
+        <h2 class="section-title">Inversión en tu Futuro</h2>
+        <div class="pricing-container">
+            <div class="pricing-content">
+                <div class="price">$299</div>
+                <div class="price-subtitle">Pago único - Valor de por vida</div>
+                
+                <ul class="features-list">
+                    <li>Acceso completo a todas las funciones</li>
+                    <li>Actualizaciones gratuitas de por vida</li>
+                    <li>Soporte prioritario 24/7</li>
+                    <li>Garantía de satisfacción 30 días</li>
+                    <li>Integración con todas las plataformas</li>
+                </ul>
+                
+                <a href="#" class="cta-button">Comprar Ahora</a>
+            </div>
+        </div>
+    </div>
+</section>
+
   <section class="faq-section">
     <div class="container">
       <h2 class="section-title">Preguntas Frecuentes</h2>
@@ -24,13 +46,7 @@
     </div>
   </section>
 
-  <script>
-// ==============================
-// Fetch FAQs (index3.html)
-// ==============================
-// ==============================
-// Fetch data para index3.html
-// ==============================
+<script>
 async function fetchFaq() {
     try {
         const response = await fetch('/api/faq');
@@ -41,43 +57,41 @@ async function fetchFaq() {
     }
 }
 
-// Renderizar Introducción + FAQs en el HTML
 function renderFaq(data) {
-    // ---- Render sección de introducción ----
+    // Render Introducción
     document.querySelector('.introduction h1').textContent = data.introduction.title;
     document.querySelector('.introduction p').textContent = data.introduction.subtitle;
-    
-    const ctaButton = document.querySelector('.introduction .cta-button');
-    ctaButton.textContent = data.introduction.ctaText;
-    ctaButton.setAttribute("href", data.introduction.ctaLink);
+    const ctaBtn = document.querySelector('.introduction .cta-button');
+    ctaBtn.textContent = data.introduction.ctaText;
+    ctaBtn.href = data.introduction.ctaLink;
 
-    // ---- Render FAQs ----
-    const container = document.querySelector('.faq-section .container .row .col-lg-10');
-
-    // Título dinámico de FAQ
-    document.querySelector('.faq-section .section-title').textContent = data.title;
-
-    // Limpiar preguntas previas
-    container.innerHTML = "";
-
-    // Agregar cada FAQ
-    data.faqs.forEach(faq => {
-        const faqItem = document.createElement("details");
-        faqItem.classList.add("faq-item");
-
-        faqItem.innerHTML = `
+    // Render FAQs
+    const faqContainer = document.querySelector('.faq-section .col-lg-10');
+    faqContainer.innerHTML = data.faqs.map(faq => `
+        <details class="faq-item">
             <summary class="faq-question">${faq.question}</summary>
             <div class="faq-answer">${faq.answer}</div>
-        `;
+        </details>
+    `).join("");
 
-        container.appendChild(faqItem);
-    });
+    // Render Pricing
+    if (data.pricing) {
+        document.querySelector('.pricing .section-title').textContent = data.pricing.title;
+        document.querySelector('.pricing .price').textContent = data.pricing.price;
+        document.querySelector('.pricing .price-subtitle').textContent = data.pricing.subtitle;
+
+        const featuresList = document.querySelector('.pricing .features-list');
+        featuresList.innerHTML = data.pricing.unique_features.map(f => `<li>${f}</li>`).join("");
+
+        const pricingCta = document.querySelector('.pricing .cta-button');
+        pricingCta.textContent = data.pricing.ctaText;
+        pricingCta.href = data.pricing.ctaLink;
+    }
 }
 
 // Cargar datos al iniciar la página
 fetchFaq();
-
-  </script>
+</script>
 
   <style>
     :root {
@@ -161,7 +175,7 @@ fetchFaq();
 
     /* introduction Section */
         .introduction {
-            height: 100vh!important;
+            /*height: 100vh!important;*/
             display: flex!important;
             align-items: center!important;
             justify-content: center!important;
@@ -185,7 +199,7 @@ fetchFaq();
         .introduction-content {
             z-index: 2!important;
             color: black!important;
-            max-width: 800px!important;
+            /*max-width: 800px!important;*/
             padding: 0 20px!important;
         }
 
@@ -222,6 +236,80 @@ fetchFaq();
             background:  var(--gradient-1) !important;
             transform: translateY(-2px)!important;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2)!important;
+        }
+
+
+        /* Pricing Section */
+        .pricing {
+            padding: 120px 0;
+            /*background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);*/
+        }
+
+        .pricing-container {
+            /*max-width: 800px;*/
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 60px 40px;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            border: 1px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /*background: radial-gradient(circle, rgba(78, 205, 196, 0.1) 0%, transparent 70%);*/
+            animation: rotate 20s linear infinite;
+        }
+
+        .pricing-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .price {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .price-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .features-list {
+            margin: 40px 0;
+        }
+
+        .features-list li {
+            color: black;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            list-style: none;
+            position: relative;
+            /*padding-left: 30px;*/
+        }
+
+        .features-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ecdc4;
+            font-weight: bold;
+            font-size: 1.2rem;
         }
 
 
