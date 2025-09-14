@@ -253,7 +253,7 @@ let faqData = {
     },
     conclusion: {
         title: "Conclusión",
-        text: "El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario."
+        text: "El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario. <br> El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario."
     }
 };
 
@@ -310,8 +310,8 @@ app.get('/api/html3', (req, res) => {
         // 4. Renderizar Introducción
         const intro = faqData.introduction;
         const $intro = $('.introduction');
-        $intro.find('h1').text(intro.title);
-        $intro.find('p').text(intro.subtitle);
+        $intro.find('h2').text(intro.title);
+        $intro.find('.introduction-text').text(intro.subtitle);
         const $cta = $intro.find('.cta-button');
         $cta.text(intro.ctaText);
         $cta.attr('href', intro.ctaLink);
@@ -359,7 +359,13 @@ app.get('/api/html3', (req, res) => {
         const conclusion = faqData.conclusion;
         const $conclusion = $('.Conclusion-content');
         $conclusion.find('.Conclusion-title').text(conclusion.title);
-        $conclusion.find('.Conclusion-text').html(conclusion.text);
+
+        // Suponiendo que conclusion.text es un string con saltos de línea
+        const paragraphs = conclusion.text.split('\n').filter(p => p.trim() !== ''); // separar por saltos de línea y eliminar vacíos
+        html = paragraphs.map(p => `<div class="Conclusion-text">${p.trim()}</div>`).join('');
+        $conclusion.find('.Conclusion-text').html(html);
+
+        //$conclusion.find('.Conclusion-text').html(conclusion.text);
 
         // 9. Devolver HTML final en JSON
         res.json({ html: $.html() });

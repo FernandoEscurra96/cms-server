@@ -2,7 +2,7 @@
   <section class="introduction">
       <div class="introduction-content">
           <h2></h2>
-          <p></p>
+          <div id="introduction-text" class="introduction-text"></div>
           <a href="#productos" class="cta-button"></a>
       </div>
   </section>
@@ -84,7 +84,7 @@ async function fetchFaqData() {
 // Renderizar sección Introducción
 function renderIntroduction(intro) {
     document.querySelector(".introduction h2").textContent = intro.title;
-    document.querySelector(".introduction p").textContent = intro.subtitle;
+    document.querySelector(".introduction .introduction-text").textContent = intro.subtitle;
     const ctaButton = document.querySelector(".introduction .cta-button");
     ctaButton.textContent = intro.ctaText;
     ctaButton.href = intro.ctaLink;
@@ -553,7 +553,7 @@ fetchFaqData();
             text-align: left!important;
         }
 
-        .introduction-content p {
+        .introduction-text {
             /*font-size: 1.3rem!important;
             margin-bottom: 2rem!important;
             opacity: 1!important;
