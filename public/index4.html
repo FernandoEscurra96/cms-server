@@ -3,352 +3,314 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos Premium | Tu Marca</title>
+    <title>Guía Definitiva de Productos para el Hogar</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #333;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
-        /* introduction Section */
-        .introduction {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
             text-align: center;
             position: relative;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow: hidden;
         }
-
-        .introduction::before {
+        
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1.5" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1.5" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-            animation: float 20s ease-in-out infinite;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
         }
-
-        .introduction-content {
+        
+        .hero-content {
+            position: relative;
             z-index: 2;
-            color: white;
-            max-width: 800px;
-            padding: 0 20px;
         }
-
-        .introduction h1 {
-            font-size: 4rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: slideUp 1s ease-out 0.5s forwards;
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
-        .introduction p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: slideUp 1s ease-out 0.8s forwards;
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
-
+        
         .cta-button {
             display: inline-block;
-            padding: 15px 40px;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
             color: white;
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 50px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
-            opacity: 0;
-            animation: slideUp 1s ease-out 1.1s forwards;
+            box-shadow: 0 4px 15px rgba(238, 90, 36, 0.4);
         }
-
+        
         .cta-button:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(238, 90, 36, 0.6);
         }
-
-        /* Products Section */
-        .products-section {
-            padding: 100px 0;
-            background: linear-gradient(45deg, #f0f2f5, #ffffff);
-            position: relative;
+        
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
+        
         .section-title {
             text-align: center;
-            font-size: 3rem;
-            color: #333;
-            margin-bottom: 20px;
-            font-weight: 300;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #2c3e50;
+            position: relative;
         }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 80px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
-
+        
+        /* Top Products */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-bottom: 80px;
+            gap: 30px;
+            margin-top: 50px;
         }
-
-        .product-item {
-            position: relative;
+        
+        .product-card {
             background: white;
             border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: pointer;
-        }
-
-        .product-item:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .product-image {
-            height: 300px;
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .product-image::before {
-            content: '📱';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 4rem;
-            opacity: 0.8;
-        }
-
-        .product-item:nth-child(2) .product-image {
-            background: linear-gradient(45deg, #74b9ff, #0984e3);
-        }
-
-        .product-item:nth-child(2) .product-image::before {
-            content: '💻';
-        }
-
-        .product-item:nth-child(3) .product-image {
-            background: linear-gradient(45deg, #fd79a8, #e84393);
-        }
-
-        .product-item:nth-child(3) .product-image::before {
-            content: '🎧';
-        }
-
-        .product-item:nth-child(4) .product-image {
-            background: linear-gradient(45deg, #55efc4, #00b894);
-        }
-
-        .product-item:nth-child(4) .product-image::before {
-            content: '⌚';
-        }
-
-        .product-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .product-item:hover .product-overlay {
-            opacity: 1;
-        }
-
-        .product-content {
             padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
         }
-
-        .product-title {
-            font-size: 1.8rem;
-            color: #333;
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+        
+        .product-card h3 {
+            color: #2c3e50;
             margin-bottom: 15px;
-            font-weight: 600;
+            font-size: 1.3rem;
         }
-
-        .product-description {
+        
+        .product-card p {
             color: #666;
             margin-bottom: 20px;
             line-height: 1.6;
         }
-
-        .product-price {
-            font-size: 2rem;
-            color: #667eea;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .product-button {
+        
+        .product-link {
             display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
             color: white;
+            padding: 12px 25px;
             text-decoration: none;
             border-radius: 25px;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
-
-        .product-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        
+        .product-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(78, 205, 196, 0.4);
         }
-
-        /* Featured Product Section */
-        .featured-section {
-            padding: 100px 0;
-            background: #1a1a1a;
-            color: white;
-            position: relative;
+        
+        /* Errors Section */
+        .errors-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
         }
-
-        .featured-content {
+        
+        .errors-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
-
-        .featured-image {
-            height: 500px;
-            background: linear-gradient(45deg, #ff7675, #fd79a8);
-            border-radius: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .featured-image::before {
-            content: '🚀';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 8rem;
-            opacity: 0.8;
-        }
-
-        .featured-text h2 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-
-        .featured-text p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #ccc;
-            line-height: 1.6;
-        }
-
-        .featured-button {
-            display: inline-block;
-            padding: 15px 40px;
-            background: transparent;
-            color: white;
-            text-decoration: none;
-            border: 2px solid white;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-
-        .featured-button:hover {
+        
+        .error-card {
             background: white;
-            color: #1a1a1a;
-            transform: translateY(-2px);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
-
-        /* Newsletter Section */
-        .newsletter-section {
-            padding: 100px 0;
+        
+        .error-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .error-card h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .error-location {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            background: #f8f9fa;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 60px;
+            color: #667eea;
+            font-weight: bold;
+            opacity: 0.3;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .savings-data {
+            background: linear-gradient(45deg, #56ab2f, #a8e6cf);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .verification {
+            color: #27ae60;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Buying Guide */
+        .guide-section {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+        
+        .checklist {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .checklist ul {
+            list-style: none;
+        }
+        
+        .checklist li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #27ae60;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        /* Conclusion */
+        .conclusion-section {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            text-align: center;
-            color: white;
-        }
-
-        .newsletter-form {
-            max-width: 500px;
-            margin: 40px auto 0;
-            display: flex;
-            gap: 10px;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 15px 20px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            backdrop-filter: blur(10px);
-        }
-
-        .newsletter-input::placeholder {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .newsletter-button {
-            padding: 15px 30px;
-            background: rgba(255, 255, 255, 0.3);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .newsletter-button:hover {
-            background: rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        .footer {
-            padding: 60px 0;
-            background: #1a1a1a;
             color: white;
             text-align: center;
         }
-
+        
+        .conclusion-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .products-grid,
+            .errors-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
         /* Animations */
-        @keyframes slideUp {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -358,72 +320,256 @@
                 transform: translateY(0);
             }
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .introduction h1 {
-                font-size: 2.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .featured-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .newsletter-form {
-                flex-direction: column;
-            }
-        }
-
-        /* Scroll animations */
+        
         .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <!-- introduction Section -->
-    <section class="introduction">
-        <div class="introduction-content">
-            <h1>Productos Premium</h1>
-            <p>Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia</p>
-            <a href="#productos" class="cta-button">Ver Productos</a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Guía Definitiva de Productos para el Hogar</h1>
+                <p>Descubre los mejores productos seleccionados por expertos para transformar tu hogar</p>
+                <a href="#productos" class="cta-button">Ver Productos Recomendados</a>
+            </div>
         </div>
     </section>
 
-    
+    <!-- Introduction -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">¿Por qué confiar en nuestras recomendaciones?</h2>
+            <p style="text-align: center; font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto;">
+                Utilizamos una metodología rigurosa basada en análisis de usuarios reales, pruebas de calidad y comparativas exhaustivas 
+                para seleccionar únicamente los productos que realmente marcan la diferencia en tu día a día.
+            </p>
+        </div>
+    </section>
 
-    <!-- Featured Product -->
-    
+    <!-- Top 3 Products -->
+    <section class="section" id="productos">
+        <div class="container">
+            <h2 class="section-title">Top 3 Productos Recomendados</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <h3>Pritt Barra Adhesiva - Pegamento Seguro para Niños</h3>
+                    <p>Pegamento infantil certificado y seguro, perfecto para manualidades y proyectos escolares. Su fórmula no tóxica y fácil aplicación lo convierte en la elección ideal para familias.</p>
+                    <a href="https://www.amazon.es/dp/B001E5E2Y0" class="product-link" target="_blank">Ver en Amazon</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>Tefal Mango Ingenio - Sistema Extraíble Profesional</h3>
+                    <p>Mango extraíble con sistema de fijación de 3 puntos que soporta hasta 10kg. Compatible con la gama Ingenio, ofrece máxima versatilidad y seguridad en la cocina.</p>
+                    <a href="https://www.amazon.es/dp/B00X9ZV1X2" class="product-link" target="_blank">Ver en Amazon</a>
+                </div>
+                
+                <div class="product-card">
+                    <h3>TrendPlain Pulverizador de Aceite 2 en 1</h3>
+                    <p>Spray de aceite de 470ml con doble funcionalidad, ideal para freidoras de aire, ensaladas y cocina saludable. Diseño ergonómico y sistema antiderrames.</p>
+                    <a href="https://www.amazon.es/dp/B09VYQK1Q3" class="product-link" target="_blank">Ver en Amazon</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Newsletter -->
-    
+    <!-- Common Mistakes -->
+    <section class="section errors-section">
+        <div class="container">
+            <h2 class="section-title">Errores Comunes al Elegir</h2>
+            <div class="errors-grid">
+                <div class="error-card">
+                    <h4>Pegamento genérico sin certificación infantil</h4>
+                    <p class="error-location">📍 Cocina de la familia Gómez</p>
+                    <p>Los pegamentos sin certificación pueden contener químicos tóxicos peligrosos para los niños, causando irritaciones y problemas de salud a largo plazo.</p>
+                </div>
+                
+                <div class="error-card">
+                    <h4>Mango para ollas sin sistema de fijación seguro</h4>
+                    <p class="error-location">📍 Cocina del apartamento de Marta</p>
+                    <p>Los mangos sin sistema de fijación adecuado pueden desprenderse durante el uso, causando accidentes graves con líquidos calientes.</p>
+                </div>
+                
+                <div class="error-card">
+                    <h4>Pulverizador de aceite de baja calidad</h4>
+                    <p class="error-location">📍 Cocina del piso compartido de estudiantes</p>
+                    <p>Los pulverizadores baratos tienden a obstruirse, gotear y distribuir el aceite de forma desigual, arruinando las preparaciones culinarias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Footer -->
-    
+    <!-- Real Cases -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <h2 class="section-title">Casos Reales de Éxito</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Después de probar el pegamento Pritt, mis hijos pueden hacer manualidades sin preocupaciones. Es seguro y realmente funciona."</p>
+                    <div class="savings-data">Ahorro: 40€/año en materiales desperdiciados</div>
+                    <p class="verification">✓ Verificado por usuario real</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"El mango Tefal Ingenio cambió mi forma de cocinar. Ahora puedo usar las sartenes en el horno sin problemas y ocupan menos espacio."</p>
+                    <div class="savings-data">Eficiencia: 50% más espacio en cocina</div>
+                    <p class="verification">✓ Verificado por usuario real</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Con el pulverizador TrendPlain uso 70% menos aceite en mis comidas. La distribución es perfecta y mi freidora de aire funciona mejor."</p>
+                    <div class="savings-data">Ahorro: 60€/año en aceite de cocina</div>
+                    <p class="verification">✓ Verificado por usuario real</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        
-    </script>
+    <!-- Buying Guide -->
+    <section class="section guide-section">
+        <div class="container">
+            <h2 class="section-title">Guía de Compra Definitiva</h2>
+            <div class="checklist">
+                <h3 style="margin-bottom: 20px; color: #2c3e50;">Checklist antes de comprar:</h3>
+                <ul>
+                    <li>Verificar certificaciones de seguridad y calidad del producto</li>
+                    <li>Leer reseñas de usuarios reales y expertos independientes</li>
+                    <li>Comparar precios en diferentes plataformas y verificar ofertas</li>
+                    <li>Comprobar política de devoluciones y garantía del fabricante</li>
+                </ul>
+            </div>
+            <p style="text-align: center; font-size: 1.1rem; color: #555; margin-top: 30px;">
+                Seguir estos pasos simples te ahorrará tiempo, dinero y frustraciones. Un producto bien elegido es una inversión 
+                que mejorará tu calidad de vida durante años.
+            </p>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="section conclusion-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Conclusión</h2>
+            <p>
+                Elegir los productos correctos para tu hogar no tiene por qué ser complicado. Con esta guía completa y nuestras 
+                recomendaciones verificadas, tienes todo lo necesario para tomar decisiones inteligentes que transformarán tu día a día. 
+                Invierte en calidad, ahorra a largo plazo y disfruta de productos que realmente funcionan.
+            </p>
+        </div>
+    </section>
+
+<script>
+async function fetchRecomendationData() {
+    try {
+        const response = await fetch('/api/recomendations'); // tu endpoint
+        const data = await response.json();
+
+        renderHero(data.title);
+        renderIntroduction(data.introduction, data.methodology);
+        renderTopProducts(data.top_3_recommended);
+        renderErrors(data.errors_election);
+        renderRealCases(data.real_cases);
+        renderBuyingGuide(data.buying_guide);
+        renderConclusion(data.conclusion);
+    } catch (err) {
+        console.error("Error cargando los datos:", err);
+    }
+}
+
+// Renderizar Hero
+function renderHero(title) {
+    document.querySelector(".hero h1").textContent = title;
+}
+
+// Renderizar Introducción + Metodología
+function renderIntroduction(intro, methodology) {
+    const introSection = document.querySelector(".section:nth-of-type(2) p");
+    introSection.textContent = intro;
+
+    const methodSection = document.createElement("p");
+    methodSection.style.textAlign = "center";
+    methodSection.style.marginTop = "20px";
+    methodSection.textContent = methodology;
+    introSection.parentElement.appendChild(methodSection);
+}
+
+// Renderizar Top 3 Productos
+function renderTopProducts(products) {
+    const container = document.querySelector(".products-grid");
+    container.innerHTML = "";
+
+    products.forEach(prod => {
+        const card = document.createElement("div");
+        card.classList.add("product-card");
+        card.innerHTML = `
+            <h3>${prod.name}</h3>
+            <p>${prod.explanation}</p>
+            <a href="${prod.link}" class="product-link" target="_blank">Ver en Amazon</a>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Renderizar Errores comunes
+function renderErrors(errors) {
+    const container = document.querySelector(".errors-grid");
+    container.innerHTML = "";
+
+    errors.forEach(err => {
+        const card = document.createElement("div");
+        card.classList.add("error-card");
+        card.innerHTML = `
+            <h4>${err.product}</h4>
+            <p class="error-location">📍 ${err.local}</p>
+            <p>${err.failure_reason}</p>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Renderizar Casos Reales
+function renderRealCases(cases) {
+    const container = document.querySelector(".testimonials-grid");
+    container.innerHTML = "";
+
+    cases.forEach(c => {
+        const card = document.createElement("div");
+        card.classList.add("testimonial-card");
+        card.innerHTML = `
+            <p class="testimonial-text">"${c.testimony}"</p>
+            <div class="savings-data">${c.data_savings}</div>
+            <p class="verification">✓ ${c.verification}</p>
+        `;
+        container.appendChild(card);
+    });
+}
+
+// Renderizar Guía de Compra
+function renderBuyingGuide(guide) {
+    const checklistContainer = document.querySelector(".checklist ul");
+    checklistContainer.innerHTML = "";
+
+    guide.checklist.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        checklistContainer.appendChild(li);
+    });
+
+    const explanationP = document.querySelector(".guide-section p");
+    explanationP.textContent = guide.explanation;
+}
+
+// Renderizar Conclusión
+function renderConclusion(conclusion) {
+    const conclusionP = document.querySelector(".conclusion-section p");
+    conclusionP.textContent = conclusion;
+}
+
+// Iniciar fetch
+fetchRecomendationData();
+</script>
+
+
 </body>
 </html>
