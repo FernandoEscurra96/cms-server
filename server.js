@@ -311,7 +311,13 @@ app.get('/api/html3', (req, res) => {
         const intro = faqData.introduction;
         const $intro = $('.introduction');
         $intro.find('h2').text(intro.title);
-        $intro.find('.introduction-text').text(intro.subtitle);
+        //$intro.find('.introduction-text').text(intro.subtitle);
+        
+        // Convertir subtitle en divs
+        const lines = intro.subtitle.split('\n').filter(line => line.trim() !== '');
+        const subtitleHtml = lines.map(line => `<div>${line.trim()}</div>`).join('');
+        $intro.find('.introduction-text').html(subtitleHtml);
+
         const $cta = $intro.find('.cta-button');
         $cta.text(intro.ctaText);
         $cta.attr('href', intro.ctaLink);
