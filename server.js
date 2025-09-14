@@ -267,6 +267,10 @@ let faqData = {
             consequence: "Revisar logs del servidor\nContactar soporte"
         }
     ]
+    },
+    similar: {
+        title: "Productos Similares",
+        text: "Explora alternativas que también ofrecen practicidad y sostenibilidad.\nModelos de otras marcas incluyen opciones reutilizables de silicona.\nEstos pueden complementar o reemplazar el uso de papeles desechables."
     }
 };
 
@@ -413,6 +417,23 @@ app.get('/api/html3', (req, res) => {
 
         // título de la sección
         $('.errors-section .errors-section-title').text(faqData.errors.title);
+
+
+        // 6. Renderizar Similar
+        const $similarContainer = $('.similar-content');
+
+        // título
+        $similarContainer.find('.similar-title').text(faqData.similar.title);
+
+        // texto (múltiples párrafos como <div>)
+        const similarHtml = faqData.similar.text
+            .split("\n")
+            .filter(line => line.trim() !== "")
+            .map(line => `<div>${line.trim()}</div>`)
+            .join("");
+
+        // inyectar en el contenedor
+        $similarContainer.find('.similar-text').html(similarHtml);
 
         // 9. Devolver HTML final en JSON
         res.json({ html: $.html() });
