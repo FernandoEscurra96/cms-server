@@ -254,6 +254,19 @@ let faqData = {
     conclusion: {
         title: "Conclusión",
         text: "El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario. <br> El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario."
+    },
+    errors: {
+        title: "Errores comunes al comprar",
+        items: [
+        {
+            description: "Error 1: No se carga la página",
+            consequence: "Verificar conexión\nReiniciar el servidor"
+        },
+        {
+            description: "Error 2: API devuelve 500",
+            consequence: "Revisar logs del servidor\nContactar soporte"
+        }
+    ]
     }
 };
 
@@ -372,6 +385,34 @@ app.get('/api/html3', (req, res) => {
         $conclusion.find('.Conclusion-text').html(html);
 
         //$conclusion.find('.Conclusion-text').html(conclusion.text);
+        // 5. Renderizar Errors
+        const $errorsContainer = $('.errors-section .col-lg-10');
+        $errorsContainer.empty(); // limpiar contenido anterior
+
+        faqData.errors.items.forEach(error => {
+            const descHtml = error.description
+                .split("\n")
+                .filter(line => line.trim() !== "")
+                .map(line => `<div>${line.trim()}</div>`)
+                .join("");
+
+            const consHtml = error.consequence
+                .split("\n")
+                .filter(line => line.trim() !== "")
+                .map(line => `<div>${line.trim()}</div>`)
+                .join("");
+
+            const errorItem = `
+                <details class="errors-item">
+                    <summary class="errors-description">${descHtml}</summary>
+                    <div class="errors-consequence">${consHtml}</div>
+                </details>
+            `;
+            $errorsContainer.append(errorItem);
+        });
+
+        // título de la sección
+        $('.errors-section .errors-section-title').text(faqData.errors.title);
 
         // 9. Devolver HTML final en JSON
         res.json({ html: $.html() });

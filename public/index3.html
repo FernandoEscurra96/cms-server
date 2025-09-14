@@ -17,6 +17,24 @@
     </div>
 </div>
 
+
+<section class="errors-section">
+    <div class="errors-container">
+      <h2 class="errors-section-title"></h2>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+
+          <!-- se inyectarán dinámicamente -->
+          <details class="errors-item">
+            <summary class="errors-description"></summary>
+            <div class="errors-consequence"></div>
+          </details>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="pricing" id="precio">
     <div class="container">
         <h2 class="section-title"></h2>
@@ -38,6 +56,8 @@
         </div>
     </div>
 </section>
+
+
 
   <section class="faq-section">
     <div class="container">
@@ -76,6 +96,7 @@ async function fetchFaqData() {
         renderPricing(data.pricing);
         renderFindings(data.findings);
         renderConclusion(data.conclusion);
+        renderErrors(data.errors);
     } catch (err) {
         console.error("Error cargando los datos:", err);
     }
@@ -136,6 +157,45 @@ function renderConclusion(conclusion) {
     document.querySelector(".Conclusion-text").textContent = conclusion.text;
 }
 
+// Renderizar Errors
+function renderErrors(errorsData) {
+    // Seleccionamos el contenedor
+    const errorsContainer = document.querySelector(".errors-section .col-lg-10");
+
+    // Limpiar contenido previo
+    errorsContainer.innerHTML = "";
+
+    // Recorrer cada error
+    errorsData.items.forEach(error => {
+        // Convertir description en <div>
+        const descLines = error.description
+            .split("\n")
+            .filter(line => line.trim() !== "")
+            .map(line => `<div>${line.trim()}</div>`)
+            .join("");
+
+        // Convertir consequence en <div>
+        const consLines = error.consequence
+            .split("\n")
+            .filter(line => line.trim() !== "")
+            .map(line => `<div>${line.trim()}</div>`)
+            .join("");
+
+        // Construir bloque de error
+        const errorItem = document.createElement("details");
+        errorItem.classList.add("errors-item");
+        errorItem.innerHTML = `
+            <summary class="errors-description">${descLines}</summary>
+            <div class="errors-consequence">${consLines}</div>
+        `;
+
+        // Insertar en el contenedor
+        errorsContainer.appendChild(errorItem);
+    });
+
+    // Actualizar título
+    document.querySelector(".errors-section .errors-section-title").textContent = errorsData.title;
+}
 // Cargar datos al iniciar la página
 fetchFaqData();
 </script>
@@ -563,5 +623,71 @@ fetchFaqData();
             margin: 0!important;         /* Elimina márgenes automáticos que centran */
             text-align: left!important;
         }
+
+        .errors-section {
+          padding: 100px 0 !important;
+          background: white !important;
+        }
+
+        .errors-item {
+          background: #f8f9fa !important;
+          margin-bottom: 20px !important;
+          border-radius: 10px !important;
+          overflow: hidden !important;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+        }
+
+         .errors-item {
+          background: #f8f9fa !important;
+          margin-bottom: 20px !important;
+          border-radius: 10px !important;
+          overflow: hidden !important;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.08) !important;
+        }
+
+        .errors-description {
+          background: var(--gradient-1) !important;
+          color: white !important;
+          padding: 25px 30px !important;
+          cursor: pointer !important;
+          font-weight: 600 !important;
+          display: flex !important;
+          justify-content: space-between !important;
+          align-items: center !important;
+          transition: all 0.3s ease !important;
+          list-style: none !important;
+        }
+
+        .errors-description:hover {
+          background: var(--secondary-color) !important;
+        }
+
+        .errors-consequence {
+          padding: 30px !important;
+          line-height: 1.7 !important;
+          color: var(--text-dark) !important;
+          border-top: 1px solid #dee2e6 !important;
+        }
+
+        .errors-section-title {
+          font-size: 3rem !important;
+          font-weight: 700 !important;
+          margin-bottom: 3rem !important;
+          text-align: center !important;
+          color: var(--dark-color) !important;
+          position: relative !important;
+        }
+
+      .errors-section-title::after {
+        content: '' !important;
+        position: absolute !important;
+        bottom: -10px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 80px !important;
+        height: 4px !important;
+        background: var(--gradient-1) !important;
+        border-radius: 2px !important;
+      }
   </style>
 </body>
