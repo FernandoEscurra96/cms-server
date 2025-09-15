@@ -21,7 +21,8 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
+            background: #2C3E50;
             color: white;
             padding: 100px 0;
             text-align: center;
@@ -335,20 +336,13 @@
         <div class="container">
             <div class="hero-content fade-in">
                 <h1></h1>
-                <p></p>
+                <p>Los 3 productos que mis clientes recomiendan</p>
                 <a href="#productos" class="cta-button">Ver Productos Recomendados</a>
             </div>
         </div>
     </section>
 
-    <!-- Introduction -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title"></h2>
-            <p style="text-align: center; font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto;">
-            </p>
-        </div>
-    </section>
+
 
     <!-- Top 3 Products -->
     <section class="section" id="productos">
@@ -375,6 +369,16 @@
                     <p></p>
                     <a href="https://www.amazon.es/dp/B09VYQK1Q3" class="product-link" target="_blank">Ver en Amazon</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Introduction -->
+    <section class="section">
+        <h2 class="section-title">Compra Productos de excelente calidad</h2>
+        <div class="container">
+            
+            <div style=" font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto;">
             </div>
         </div>
     </section>
@@ -463,8 +467,9 @@ async function fetchRecomendationData() {
         const data = await response.json();
 
         renderHero(data.title);
-        renderIntroduction(data.introduction, data.methodology);
+        
         renderTopProducts(data.top_3_recommended);
+        renderIntroduction(data.introduction, data.methodology);
         renderErrors(data.errors_election);
         renderRealCases(data.real_cases);
         renderBuyingGuide(data.buying_guide);
@@ -481,13 +486,20 @@ function renderHero(title) {
 
 // Renderizar Introducción + Metodología
 function renderIntroduction(intro, methodology) {
-    const introSection = document.querySelector(".section:nth-of-type(2) p");
+    const introSection = document.querySelector(".section:nth-of-type(3) div");
     introSection.textContent = intro;
 
-    const methodSection = document.createElement("p");
-    methodSection.style.textAlign = "center";
-    methodSection.style.marginTop = "20px";
+    const methodSection = document.createElement("div");
+   // methodSection.style.textAlign = "center";
+    //methodSection.style.marginTop = "20px";
+    //methodSection.style.classList = "container";
+    methodSection.classList.add("container");
     methodSection.textContent = methodology;
+
+    const methodSectionTitle = document.createElement("h2");
+    methodSectionTitle.textContent = "Porque lo recomendamos?";
+    methodSectionTitle.style.textAlign = "center";
+    introSection.parentElement.appendChild(methodSectionTitle);
     introSection.parentElement.appendChild(methodSection);
 }
 
