@@ -441,8 +441,9 @@ app.get('/api/html3', (req, res) => {
 });
 
 
-let recomendationData = {
+let recommendationData = {
   "title": "Productos que Mis Clientes Recomiendan",
+  "subtitle": "subtitle",
   "introduction": "En la actualidad, el mercado de productos para cocina está saturado como nunca antes. Basta con entrar en cualquier plataforma de comercio electrónico como Amazon para darse cuenta de la abrumadora cantidad de opciones disponibles para cada necesidad, desde los utensilios más básicos hasta los gadgets más innovadores. Esta sobreoferta, lejos de facilitar la elección, suele complicarla, ya que la mayoría de los consumidores no cuentan con información suficiente para distinguir entre productos de calidad y aquellos que solo cumplen en apariencia. Según un informe reciente de la OCU, solo el 17% de los productos de cocina cumplen realmente con los estándares de calidad, durabilidad y seguridad que prometen en sus descripciones. Esto significa que más del 80% de los productos disponibles pueden no satisfacer las expectativas o incluso resultar una pérdida de dinero y tiempo.\n\nEste contexto de saturación se agrava por la facilidad con la que cualquier fabricante puede lanzar un producto al mercado, muchas veces sin pasar por controles de calidad rigurosos. Además, la competencia feroz lleva a que muchas marcas recurran a estrategias de marketing agresivas, como reseñas falsas, fotos engañosas o descripciones exageradas. El resultado es que los consumidores se ven obligados a tomar decisiones basadas en información incompleta o poco fiable, lo que aumenta el riesgo de decepción y desperdicio.\n\nPor eso, la experiencia real de los usuarios y la recomendación basada en pruebas concretas se vuelve más valiosa que nunca. En este artículo, hemos decidido ir más allá de las simples reseñas online y hemos testeado personalmente, junto a nuestros clientes, una selección de productos en cocinas reales. El objetivo es claro: identificar aquellos productos que realmente cumplen, que aportan valor en el día a día y que, tras un uso intensivo, siguen siendo recomendados por quienes los han probado. A continuación, presentamos los resultados de este análisis, con datos concretos y testimonios verificados, para que puedas tomar decisiones informadas y evitar caer en la trampa de la saturación del mercado.",
   "methodology": "Para ofrecer una selección de productos realmente útil y confiable, hemos desarrollado una metodología de testeo basada en la experiencia directa de nuestros clientes en sus propias cocinas. El proceso se llevó a cabo durante un periodo de tres meses, en el que participaron 15 hogares seleccionados por su diversidad en hábitos culinarios, tamaño de familia y frecuencia de uso de la cocina. La elección de estos hogares se realizó buscando representar tanto a usuarios ocasionales como a cocineros habituales, así como a familias con niños pequeños y personas que viven solas.\n\nCada producto fue entregado a los participantes junto con una hoja de evaluación detallada, en la que debían registrar aspectos como facilidad de uso, seguridad, durabilidad, limpieza, integración en la rutina diaria y relación calidad-precio. Además, se solicitó a los usuarios que documentaran cualquier incidencia, problema o ventaja inesperada que encontraran durante el uso. Para garantizar la objetividad, los productos fueron probados en situaciones reales: desde la preparación de comidas diarias hasta el uso en eventos familiares o actividades escolares (en el caso de la barra adhesiva).\n\nLos criterios de selección aplicados fueron estrictos: solo se consideraron aquellos productos que superaron el 80% de satisfacción en las evaluaciones, que no presentaron fallos de seguridad o funcionamiento y que, tras el periodo de prueba, seguían siendo utilizados de forma habitual por los participantes. También se valoró la facilidad de compra, la claridad de las instrucciones y la disponibilidad de repuestos o recambios. Finalmente, los resultados fueron contrastados con opiniones externas y reseñas verificadas en plataformas de venta, para descartar posibles sesgos y asegurar que las recomendaciones fueran representativas de una experiencia de usuario amplia y diversa. El objetivo final fue identificar productos que no solo cumplan en condiciones ideales, sino que resistan el uso cotidiano y aporten valor real en la cocina de cualquier hogar.",
   "top_3_recommended": [
@@ -529,7 +530,7 @@ let recomendationData = {
 // Endpoint para obtener Recomendaciones
 // ==============================
 app.get('/api/recomendations', (req, res) => {
-    res.json(recomendationData);
+    res.json(recommendationData);
 });
 
 // ==============================
@@ -544,9 +545,9 @@ app.post('/api/recomendations', (req, res) => {
     }
 
     // Mezclar data nueva con la existente
-    recomendationData = { ...recomendationData, ...newData };
+    recommendationData = { ...recommendationData, ...newData };
 
-    res.json({ message: "Recomendaciones actualizadas", recomendationData });
+    res.json({ message: "Recomendaciones actualizadas", recommendationData });
 });
 
 
@@ -565,112 +566,125 @@ app.get('/api/html4', (req, res) => {
         // 1. Remover cualquier <script> ... </script>
         html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "");
 
-        // 2. Minificar CSS (si tienes función minifyCss)
+        // 2. Minificar CSS
         html = minifyCss(html);
 
         // 3. Cargar HTML en Cheerio
         const $ = cheerio.load(html);
 
         // =========================
-        // Renderizar HERO
+        // Renderizar HERO (title + subtitle)
         // =========================
-        const hero = recommendationData.hero;
         const $hero = $('.hero');
-        $hero.find('h1').text(hero.title);
-        $hero.find('p').text(hero.subtitle);
-        $hero.find('.cta-button')
-            .text(hero.ctaText)
-            .attr('href', hero.ctaLink);
-
+        $hero.find('h1').text(recommendationData.title);
+        $hero.find('p').text(recommendationData.subtitle);
 
         // =========================
-        // Renderizar TOP PRODUCTS
+        // Renderizar INTRODUCTION
+        // =========================
+        const introText = recommendationData.introduction
+            .split("\n")
+            .filter(line => line.trim() !== "")
+            .map(line => `<div>${line.trim()}</div>`)
+            .join("");
+
+        const $intro = $('.introduction');
+        $intro.find('h2').text("Introducción");
+        $intro.find('.introduction-text').html(introText);
+
+        // =========================
+        // Renderizar METHODOLOGY
+        // =========================
+        const methodologyHtml = recommendationData.methodology
+            .split("\n")
+            .filter(line => line.trim() !== "")
+            .map(line => `<p>${line.trim()}</p>`)
+            .join("");
+
+        const $method = $('.methodology');
+        $method.find('h2').text("Metodología");
+        $method.find('.methodology-text').html(methodologyHtml);
+
+        // =========================
+        // Renderizar TOP 3 PRODUCTS
         // =========================
         const $productsGrid = $('.products-grid');
         $productsGrid.empty();
         recommendationData.top_3_recommended.forEach(prod => {
             const productCard = `
                 <div class="product-card">
+                    <img src="${prod.image}" alt="${prod.name}" class="product-image"/>
                     <h3>${prod.name}</h3>
-                    <p>${prod.description}</p>
+                    <p>${prod.explanation}</p>
                     <a href="${prod.link}" class="product-link" target="_blank">Ver en Amazon</a>
                 </div>
             `;
             $productsGrid.append(productCard);
         });
-                // =========================
-        // Renderizar INTRODUCTION
-        // =========================
-        const intro = recommendationData.introduction;
-        const $intro = $('.introduction');
-        $intro.find('h2').text(intro.title);
-
-        const introHtml = intro.subtitle
-            .split("\n")
-            .filter(line => line.trim() !== "")
-            .map(line => `<div>${line.trim()}</div>`)
-            .join("");
-        $intro.find('.introduction-text').html(introHtml);
-
-        $intro.find('.cta-button')
-            .text(intro.ctaText)
-            .attr('href', intro.ctaLink);
-
 
         // =========================
-        // Renderizar ERRORS
+        // Renderizar ERRORS_ELECTION
         // =========================
         const $errorsGrid = $('.errors-grid');
         $errorsGrid.empty();
-        recommendationData.errors.forEach(errItem => {
+        recommendationData.errors_election.forEach(err => {
             const errCard = `
                 <div class="error-card">
-                    <h4>${errItem.title}</h4>
-                    <p class="error-location">${errItem.location}</p>
-                    <p>${errItem.description}</p>
+                    <img src="${err.photo}" alt="${err.product}" class="error-photo"/>
+                    <h4>${err.product}</h4>
+                    <p class="error-location">${err.local}</p>
+                    <p>${err.failure_reason}</p>
                 </div>
             `;
             $errorsGrid.append(errCard);
         });
 
         // =========================
-        // Renderizar TESTIMONIALS
+        // Renderizar REAL CASES
         // =========================
-        const $testimonialsGrid = $('.testimonials-grid');
-        $testimonialsGrid.empty();
-        recommendationData.testimonials.forEach(test => {
-            const testimonialCard = `
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"${test.text}"</p>
-                    <div class="savings-data">${test.savings}</div>
-                    <p class="verification">✓ Verificado por usuario real</p>
+        const $realCasesGrid = $('.real-cases-grid');
+        $realCasesGrid.empty();
+        recommendationData.real_cases.forEach(rc => {
+            const rcCard = `
+                <div class="real-case-card">
+                    <p class="testimony">"${rc.testimony}"</p>
+                    <div class="savings">${rc.data_savings}</div>
+                    <p class="verification">${rc.verification}</p>
                 </div>
             `;
-            $testimonialsGrid.append(testimonialCard);
+            $realCasesGrid.append(rcCard);
         });
 
         // =========================
-        // Renderizar GUIDE
+        // Renderizar BUYING GUIDE
         // =========================
         const $checklist = $('.checklist ul');
         $checklist.empty();
-        recommendationData.guide.checklist.forEach(item => {
+        recommendationData.buying_guide.checklist.forEach(item => {
             $checklist.append(`<li>${item}</li>`);
         });
 
-        // =========================
-        // Renderizar CONCLUSION
-        // =========================
-        const conclusion = recommendationData.conclusion;
-        const $conclusion = $('.conclusion-section');
-        $conclusion.find('h2').text("Conclusión");
-
-        const conclHtml = conclusion.text
+        const $guide = $('.buying-guide');
+        const guideHtml = recommendationData.buying_guide.explanation
             .split("\n")
             .filter(line => line.trim() !== "")
             .map(line => `<p>${line.trim()}</p>`)
             .join("");
-        $conclusion.find('p').html(conclHtml);
+
+        $guide.find('.guide-explanation').html(guideHtml);
+
+        // =========================
+        // Renderizar CONCLUSION
+        // =========================
+        const $conclusion = $('.conclusion-section');
+        $conclusion.find('h2').text("Conclusión");
+
+        const conclHtml = recommendationData.conclusion
+            .split("\n")
+            .filter(line => line.trim() !== "")
+            .map(line => `<p>${line.trim()}</p>`)
+            .join("");
+        $conclusion.find('.conclusion-text').html(conclHtml);
 
         // 9. Devolver HTML final en JSON
         res.json({ html: $.html() });
