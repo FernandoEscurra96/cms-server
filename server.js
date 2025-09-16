@@ -212,7 +212,7 @@ app.post('/api/competitors', (req, res) => {
 // ==============================
 let faqData = {
     introduction: {
-        title: "Productos Premium",
+        title: "Productos Premium de JSON",
         subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
         ctaText: "Comprar Ahora",
         ctaLink: "#productos"
