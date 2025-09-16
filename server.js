@@ -11,13 +11,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Producto por defecto
 let productData = {
-    category: "Smartphone Premium",
+    category: "Smartphone Premium JSON",
     title: "iPhone 15 Pro Max",
     description: "Experimenta el futuro en tus manos con el smartphone más avanzado. Chip A17 Pro revolucionario, sistema de cámaras profesional de 48MP y pantalla Super Retina XDR de 6.7 pulgadas que redefine la excelencia.",
     priceOriginal: "$1,299",
     priceCurrent: "$1,199",
     priceDiscount: "-8%",
-    buyLink: "https://www.ejemplo.com/comprar-iphone"
+    buyLink: "https://www.ejemplo.com/comprar-iphone",
+    image: "https://m.media-amazon.com/images/I/81PMIW46YHL._AC_SX679_.jpg"
 };
 
 // Endpoint para obtener el producto

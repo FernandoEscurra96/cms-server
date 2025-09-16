@@ -8,7 +8,9 @@
     
     <div class="content-wrapper">
         <div class="product-image-section">
-            <div class="product-image"></div>
+            <div class="product-image">
+                <img src="" alt="Pritt Barra Adhesiva" class="product-image-img">
+            </div>
         </div>
         
         <div class="product-details">
@@ -44,6 +46,8 @@ async function fetchProduct() {
 
 // Renderizar el producto en el HTML
 function renderProduct(data) {
+    console.log(data);
+    console.log("render product");
     document.querySelector('.product-category').textContent = data.category;
     document.querySelector('.product-title').textContent = data.title;
     document.querySelector('.product-description').textContent = data.description;
@@ -51,10 +55,33 @@ function renderProduct(data) {
     document.querySelector('.price-current').textContent = data.priceCurrent;
     document.querySelector('.price-discount').textContent = data.priceDiscount;
 
+   // const img = document.querySelector(".product-image");
+
+    // Modifica atributos
+    //img.src =  data.image; 
+    //img.alt = "Imagen cambiada dinámicamente";
+
     const buyButton = document.querySelector('.buy-button');
     buyButton.onclick = () => {
         window.location.href = data.buyLink;
     };
+    document.querySelector(".product-image-img").src = data.image;
+
+    /*document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("DOMContentLoaded");
+    const img = document.querySelector(".product-image-img");
+
+    if (img) {
+        img.src = data.image;
+        img.alt = "Imagen cambiada dinámicamente";
+        console.log("encontrado img ");
+        console.log(img);
+    } else {
+        console.log("no encontrado img ");
+        console.error("No se encontró el elemento .product-image");
+    }
+    });*/
 }
 
 // Cargar datos al iniciar la página
@@ -68,13 +95,14 @@ fetchProduct();
 .product-container {
     width: 100% !important;
     min-height: 100vh !important;
-    background: rgba(255, 255, 255, 0.05) !important;
+    /*background: rgba(255, 255, 255, 0.05) !important;*/
+    background: #2C3E50!important;
     backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     position: relative !important;
     overflow: hidden !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;*/
     min-height: 100vh !important;
 }
 
@@ -99,8 +127,9 @@ fetchProduct();
     left: 0 !important;
     right: 0 !important;
     height: 6px !important;
-    background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3) !important;
-    background-size: 400% 100% !important;
+    background: #2C3E50!important;
+    /*background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3) !important;
+    */background-size: 400% 100% !important;
     animation: gradient 4s ease infinite !important;
 }
 
@@ -116,7 +145,7 @@ fetchProduct();
     min-height: 100vh !important;
     align-items: center !important;
     gap: 4rem !important;
-    padding: 4rem 6rem !important;
+    padding: 20rem 12rem !important;
 }
 
 .product-image-section {
@@ -129,7 +158,7 @@ fetchProduct();
 .product-image {
     width: 500px !important;
     height: 500px !important;
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+    /*background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;*/
     border-radius: 30px !important;
     display: flex !important;
     align-items: center !important;
@@ -147,7 +176,7 @@ fetchProduct();
 }
 
 .product-image::before {
-    content: '📱' !important;
+    /*content: '📱' !important;*/
     font-size: 8rem !important;
     opacity: 0.9 !important;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
@@ -157,7 +186,7 @@ fetchProduct();
     position: absolute !important;
     top: 2rem !important;
     right: 2rem !important;
-    background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+    /*background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;*/
     color: white !important;
     padding: 1rem 2rem !important;
     border-radius: 50px !important;
@@ -366,7 +395,14 @@ fetchProduct();
         flex-direction: column !important;
         align-items: stretch !important;
     }
+
 }
+
+    .product-image-img {
+        width: 100%!important;
+        border-radius: 15px!important;
+        margin-bottom: 20px !important;
+    }
 /* (Se mantiene el resto de tu CSS igual que en tu ejemplo anterior) */
 </style>
 
