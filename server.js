@@ -324,13 +324,13 @@ app.get('/api/html3', (req, res) => {
         // 3. Cargar HTML en Cheerio
         const $ = cheerio.load(html);
 
-        // 4. Renderizar Introducción
+        // ==============================
+        // Renderizar Introducción
+        // ==============================
         const intro = faqData.introduction;
         const $intro = $('.introduction');
         $intro.find('h2').text(intro.title);
-        //$intro.find('.introduction-text').text(intro.subtitle);
-        
-        // Convertir subtitle en divs
+
         const lines = intro.subtitle.split('\n').filter(line => line.trim() !== '');
         const subtitleHtml = lines.map(line => `<div>${line.trim()}</div>`).join('');
         $intro.find('.introduction-text').html(subtitleHtml);
@@ -339,9 +339,11 @@ app.get('/api/html3', (req, res) => {
         $cta.text(intro.ctaText);
         $cta.attr('href', intro.ctaLink);
 
-        // 5. Renderizar FAQs
+        // ==============================
+        // Renderizar FAQs
+        // ==============================
         const $faqContainer = $('.faq-section .col-lg-10');
-        $faqContainer.empty(); // limpiar contenido anterior
+        $faqContainer.empty();
         faqData.faqs.forEach(faq => {
             const faqItem = `
                 <details class="faq-item">
@@ -353,7 +355,9 @@ app.get('/api/html3', (req, res) => {
         });
         $('.faq-section .section-title').text(faqData.title);
 
-        // 6. Renderizar Pricing
+        // ==============================
+        // Renderizar Pricing
+        // ==============================
         const pricing = faqData.pricing;
         const $pricing = $('.pricing');
         $pricing.find('.section-title').text(pricing.title);
@@ -365,7 +369,9 @@ app.get('/api/html3', (req, res) => {
         });
         $pricing.find('.cta-button').text(pricing.ctaText).attr('href', pricing.ctaLink);
 
-        // 7. Renderizar Findings
+        // ==============================
+        // Renderizar Findings
+        // ==============================
         const findings = faqData.findings;
         const $findings = $('.content');
         $findings.empty();
@@ -378,20 +384,22 @@ app.get('/api/html3', (req, res) => {
             `);
         });
 
-        // 8. Renderizar Conclusion
+        // ==============================
+        // Renderizar Conclusion
+        // ==============================
         const conclusion = faqData.conclusion;
         const $conclusion = $('.Conclusion-content');
         $conclusion.find('.Conclusion-title').text(conclusion.title);
 
-        // Suponiendo que conclusion.text es un string con saltos de línea
-        const paragraphs = conclusion.text.split('\n').filter(p => p.trim() !== ''); // separar por saltos de línea y eliminar vacíos
-        html = paragraphs.map(p => `<div class="Conclusion-text">${p.trim()}</div>`).join('');
-        $conclusion.find('.Conclusion-text').html(html);
+        const paragraphs = conclusion.text.split('\n').filter(p => p.trim() !== '');
+        const conclHtml = paragraphs.map(p => `<div class="Conclusion-text">${p.trim()}</div>`).join('');
+        $conclusion.find('.Conclusion-text').html(conclHtml);
 
-        //$conclusion.find('.Conclusion-text').html(conclusion.text);
-        // 5. Renderizar Errors
+        // ==============================
+        // Renderizar Errors
+        // ==============================
         const $errorsContainer = $('.errors-section .col-lg-10');
-        $errorsContainer.empty(); // limpiar contenido anterior
+        $errorsContainer.empty();
 
         faqData.errors.items.forEach(error => {
             const descHtml = error.description
@@ -415,31 +423,28 @@ app.get('/api/html3', (req, res) => {
             $errorsContainer.append(errorItem);
         });
 
-        // título de la sección
         $('.errors-section .errors-section-title').text(faqData.errors.title);
 
-
-        // 6. Renderizar Similar
+        // ==============================
+        // Renderizar Similar
+        // ==============================
         const $similarContainer = $('.similar-content');
-
-        // título
         $similarContainer.find('.similar-title').text(faqData.similar.title);
 
-        // texto (múltiples párrafos como <div>)
         const similarHtml = faqData.similar.text
             .split("\n")
             .filter(line => line.trim() !== "")
             .map(line => `<div>${line.trim()}</div>`)
             .join("");
 
-        // inyectar en el contenedor
         $similarContainer.find('.similar-text').html(similarHtml);
 
-        // 9. Devolver HTML final en JSON
-        res.json({ html: $.html() });
+        // ==============================
+        // Devolver SOLO el contenido del body
+        // ==============================
+        res.json({ html: $('body').html() });
     });
 });
-
 
 let recommendationData = {
   "title": "Productos que Mis Clientes Recomiendan",
