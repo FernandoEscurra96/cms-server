@@ -1,0 +1,81 @@
+<section class="testimonials">
+  <h2>Lo que dicen nuestros usuarios</h2>
+
+  <div class="testimonial">
+    <p>“Encuentra siempre el mejor precio en un solo lugar, sin perder tiempo comparando.”</p>
+    <div class="author">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuario 1">
+      <h4>Carlos Pérez</h4>
+    </div>
+  </div>
+
+  <div class="testimonial">
+    <p>“Explora productos útiles y accesibles, pensados para tu bolsillo.”</p>
+    <div class="author">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Usuario 2">
+      <h4>Lucía Gómez</h4>
+    </div>
+  </div>
+
+  <div class="testimonial">
+    <p>“Ahorra tiempo y dinero, con recomendaciones claras y confiables.”</p>
+    <div class="author">
+      <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Usuario 3">
+      <h4>Javier Martínez</h4>
+    </div>
+  </div>
+</section>
+
+<style>
+.testimonials {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: auto;
+  font-family: "Poppins", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px; /* Espacio entre cada testimonial */
+}
+
+.testimonial {
+  padding: 20px;
+  border: 1px solid #ccc; /* Borde de 1px */
+  border-radius: 10px;    /* Esquinas redondeadas */
+  width: 100%;
+  max-width: 600px;       /* Ancho fijo para uniformidad */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+
+  min-height: 220px;      /* Altura mínima para que todos sean iguales */
+}
+
+.testimonial p {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.author img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;      /* Redondeado completo */
+  object-fit: cover;        /* Asegura que la imagen no se deforme */
+  border: 3px solid #2C3E50;
+}
+</style>

@@ -554,7 +554,23 @@ fetchProduct();
     </div>
   </section>
 
-<div class="Conclusion-content">
+<!--<div class="Conclusion-content">
+    <h2 class="Conclusion-title">Conclusion</h2>
+    
+    <div class="Conclusion">
+        <div class="Conclusion-text">
+           
+        </div>
+    </div>
+</div>-->
+
+
+  <section id="introduction" class="introduction">
+      <div class="introduction-content">
+          <h2></h2><div class="container-introduction">
+            <!-- Izquierda --><div id="introduction-text" class="introduction-text">
+            <span class="floating-badge">Premium</span>
+        <div class="Conclusion-content">
     <h2 class="Conclusion-title">Conclusion</h2>
     
     <div class="Conclusion">
@@ -562,7 +578,25 @@ fetchProduct();
             <!-- Texto dinámico desde JSON -->
         </div>
     </div>
+</div></div><!-- Derecha --><div class="introduction-image">
+               <div class="container">
+    <div class="carousel-vertical">
+  <div class="carousel-track">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 2">
+
+    
+  </div>
+
 </div>
+
+  <!-- Ráfaga de luz
+  <div class="shine"></div>-->
+</div>
+            </div></div><div></div>
+      </div>
+  </section>
+
 
 <div class="similar-content">
     <h2 class="similar-title"></h2>
@@ -643,8 +677,8 @@ fetchProduct();
 
 
 
-<div class="carousel">
-  <div class="carousel-track">
+<div class="carousel-horizontal">
+  <div class="carousel-horizontal-track">
 
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_1_lneadv.png" alt="Imagen 1">
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_2_tkmgmk.png" alt="Imagen 2">
@@ -653,7 +687,7 @@ fetchProduct();
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_2_tkmgmk.png" alt="Imagen 2">
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075839/Generated_Image_September_16_2025_-_11_18PM_sajy9v.png" alt="Imagen 3">
 
-    <!-- duplicamos imágenes para efecto infinito -->
+   
 
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_1_lneadv.png" alt="Imagen 1">
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_2_tkmgmk.png" alt="Imagen 2">
@@ -663,6 +697,52 @@ fetchProduct();
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075839/Generated_Image_September_16_2025_-_11_18PM_sajy9v.png" alt="Imagen 3">
   </div>
 </div>
+
+
+
+<div class="end-content">
+    <h2 class="end-title"></h2>
+    
+    <div class="end">
+        <div class="end-text">
+           En HorecaRentable trabajamos cada día para ayudarte a encontrar los productos, servicios y soluciones más rentables del sector HORECA. Sabemos que gestionar un restaurante, hotel o cafetería no es una tarea sencilla: implica estar al tanto de las tendencias, controlar los costos, mejorar la experiencia de los clientes y, al mismo tiempo, mantener la rentabilidad del negocio. Por eso hemos creado este espacio, pensado especialmente para profesionales como tú, donde reunimos las mejores promociones y ofertas disponibles en los principales marketplaces.
+Nuestro objetivo es que ahorres tiempo y dinero en la búsqueda de proveedores y artículos de calidad, al mismo tiempo que accedes a información actualizada sobre productos innovadores, herramientas tecnológicas y equipamiento diseñado para hacer crecer tu negocio. Aquí no solo encontrarás recomendaciones de compra, sino también inspiración para implementar mejoras que eleven el nivel de tus servicios.
+Queremos ser tu aliado estratégico en la toma de decisiones, ofreciéndote una guía clara y práctica que te permita enfocarte en lo más importante: brindar a tus clientes una experiencia inolvidable. En HorecaRentable creemos que el éxito del sector HORECA comienza con decisiones inteligentes, respaldadas por información confiable y productos seleccionados pensando en la rentabilidad
+        </div>
+    </div>
+</div>
+
+
+<div class="countdown">
+  <div class="time-box">
+    <span class="hours">24</span>
+    <small>Horas</small>
+  </div>
+  <div class="time-box">
+    <span class="minutes">00</span>
+    <small>Minutos</small>
+  </div>
+  <div class="time-box">
+    <span class="seconds">00</span>
+    <small>Segundos</small>
+  </div>
+</div>
+
+
+<!--<div class="container">
+    <div class="carousel-vertical">
+  <div class="carousel-track">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 2">
+
+    
+  </div>
+
+</div>
+
+
+  <div class="shine"></div>
+</div>-->
 
 <script>
 async function fetchFaqData() {
@@ -1062,6 +1142,7 @@ fetchFaqData();
 
         .content {
             padding: 40px!important;
+            background: #eff2f1;
         }
         .Conclusion-content {
             padding: 40px!important;
@@ -1587,7 +1668,7 @@ fetchFaqData();
 
 
 
-.carousel {
+.carousel-horizontal {
   width: 100% !important;
   overflow: hidden !important;
   position: relative !important;
@@ -1595,13 +1676,13 @@ fetchFaqData();
   padding: 20px 0 !important;
 }
 
-.carousel-track {
+.carousel-horizontal-track {
   display: flex !important;
-  width: calc(300px * 12) !important; /* 6 originales + 6 duplicadas */
+  width: calc(300px * 12) !important; 
   animation: scroll 25s linear infinite !important;
 }
 
-.carousel img {
+.carousel-horizontal img {
   width: 300px !important;
   height: 200px !important;
   object-fit: cover !important;
@@ -1610,11 +1691,110 @@ fetchFaqData();
   box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
 }
 
-/* Animación de desplazamiento infinito */
+
 @keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); } /* se mueve la mitad (6 de 12) */
+  100% { transform: translateX(-50%); }
 }
+/*  
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.time-box {
+  background: #2C3E50;
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  text-align: center;
+  min-width: 100px;
+}
+
+.time-box span {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  animation: pulse 1s infinite alternate;
+}
+
+.time-box small {
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.1); opacity: 0.8; }
+}
+
+
+.seconds::after {
+  content: "59";
+  animation: countdownSeconds 60s steps(60, end) infinite;
+}
+
+@keyframes countdownSeconds {
+  from { content: "59"; }
+  to   { content: "00"; }
+}  */
+  
+  
+.carousel-vertical {
+  position: relative;
+  width: 400px;             /* ancho fijo del carrusel */
+  height: 470px;            /* altura proporcional a las imágenes: 721/614 * 400 ≈ 470 */
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.carousel-track {
+  display: flex;
+  flex-direction: column;
+  animation: scroll-vertical 15s linear infinite; /* Duración ajustable */
+}
+
+.carousel-track img {
+  width: 100%;
+  height: auto;             /* Mantiene la proporción original */
+  object-fit: cover;
+}
+
+/* Animación vertical del carrusel para 2 imágenes */
+@keyframes scroll-vertical {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-470px); } /* altura de 1 imagen */
+  100% { transform: translateY(0); }
+}
+
+/* Ráfaga de luz */
+.shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.6) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: shine-move 3s linear infinite;
+}
+
+/* Movimiento de la ráfaga */
+@keyframes shine-move {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+  
+  
   </style>
 </body>
 
