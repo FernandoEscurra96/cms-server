@@ -225,7 +225,7 @@ let faqData = {
 
     },
     introduction: {
-        title: "Productos Premium de JSON",
+        title: "Horeca te recomienda",
         subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
         ctaText: "Comprar Ahora",
         ctaLink: "#productos"
