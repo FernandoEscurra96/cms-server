@@ -1,0 +1,39 @@
+<div class="product-card">
+  <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758069193/sofa_omyswi.png" alt="Producto ejemplo">
+  <button class="buy-button">Comprar</button>
+</div>
+
+<style>
+    .product-card {
+  position: relative;
+  display: inline-block;
+  width: 300px;
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+}
+
+.buy-button {
+  position: absolute;
+  bottom: 10px;   /* a 10px desde abajo */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background: #2C3E50;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.buy-button:hover {
+  background: #00f2fe;
+  color: #2C3E50;
+}
+</style>

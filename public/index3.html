@@ -67,6 +67,7 @@ function renderProduct(data) {
         window.location.href = data.buyLink;
     };
     document.querySelector(".product-image-img").src = data.image;
+    document.querySelector(".img-fluid-why").src = data.image;
 
     /*document.addEventListener("DOMContentLoaded", () => {
 
@@ -607,8 +608,8 @@ fetchProduct();
 			<div class="container">
 				<div class="row justify-content-between align-items-center">
 					<div class="col-lg-6">
-						<h2 class="section-title">Why Choose Us</h2>
-						<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+						<h2 class="section-title">¿Por qué comprar en Amazon?</h2>
+						<p>Precios competitivos: ofertas y descuentos frecuentes que te ayudan a ahorrar</p>
 
 						<div class="row my-5">
 							<div class="col-6 col-md-6">
@@ -616,8 +617,8 @@ fetchProduct();
 									<div class="icon">
 										<img src="http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069197/truck_mzrvme.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Fast &amp; Free Shipping</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Envío rápido</h3>
+									<p>Recibe tus productos en el menor tiempo posible, sin costos adicionales en el envío.</p>
 								</div>
 							</div>
 
@@ -626,8 +627,8 @@ fetchProduct();
 									<div class="icon">
 										<img src="http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069167/bag_l8ozfm.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Easy to Shop</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Fácil de comprar</h3>
+									<p>Un proceso de compra simple e intuitivo que te permite encontrar lo que buscas en segundos.</p>
 								</div>
 							</div>
 
@@ -636,8 +637,8 @@ fetchProduct();
 									<div class="icon">
 										<img src="http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069192/support_ueurav.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>24/7 Support</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Soporte 24/7</h3>
+									<p>Atención al cliente disponible en todo momento para resolver tus dudas o problemas.</p>
 								</div>
 							</div>
 
@@ -646,8 +647,8 @@ fetchProduct();
 									<div class="icon">
 										<img src="http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069191/return_oii6h9.svg" alt="Image" class="imf-fluid">
 									</div>
-									<h3>Hassle Free Returns</h3>
-									<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
+									<h3>Devoluciones sin complicaciones</h3>
+									<p>Si no estás satisfecho, puedes devolver tu producto de manera rápida y sencilla.</p>
 								</div>
 							</div>
 
@@ -656,7 +657,7 @@ fetchProduct();
 
 					<div class="col-lg-5">
 						<div class="img-wrap">
-							<img src="http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069199/why-choose-us-img_uguxhl.jpg" alt="Image" class="img-fluid">
+							<img src="http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069199/why-choose-us-img_uguxhl.jpg" alt="Image" class="img-fluid-why">
 						</div>
 					</div>
 
@@ -749,6 +750,7 @@ async function fetchFaqData() {
         renderConclusion(data.conclusion);
         renderErrors(data.errors);
         renderSimilar(data.similar);
+        
     } catch (err) {
         console.error("Error cargando los datos:", err);
     }
@@ -1696,73 +1698,28 @@ fetchFaqData();
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-/*  
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 40px auto;
-  font-family: "Poppins", sans-serif;
-}
 
-.time-box {
-  background: #2C3E50;
-  color: #fff;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-  text-align: center;
-  min-width: 100px;
-}
-
-.time-box span {
-  display: block;
-  font-size: 2.5rem;
-  font-weight: bold;
-  animation: pulse 1s infinite alternate;
-}
-
-.time-box small {
-  font-size: 0.9rem;
-  color: #ddd;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  100% { transform: scale(1.1); opacity: 0.8; }
-}
-
-
-.seconds::after {
-  content: "59";
-  animation: countdownSeconds 60s steps(60, end) infinite;
-}
-
-@keyframes countdownSeconds {
-  from { content: "59"; }
-  to   { content: "00"; }
-}  */
   
   
 .carousel-vertical {
-  position: relative;
+  position: relative!important;
 /*  width: 400px;    */          /* ancho fijo del carrusel */
-  height: 470px;            /* altura proporcional a las imágenes: 721/614 * 400 ≈ 470 */
-  overflow: hidden;
-  border-radius: 16px;
+  height: 470px!important;            /* altura proporcional a las imágenes: 721/614 * 400 ≈ 470 */
+  overflow: hidden!important;
+  border-radius: 16px!important;
   /*box-shadow: 0 8px 20px rgba(0,0,0,0.15);*/
 }
 
 .carousel-track {
-  display: flex;
-  flex-direction: column;
-  animation: scroll-vertical 15s linear infinite; /* Duración ajustable */
+  display: flex!important;
+  flex-direction: column!important;
+  animation: scroll-vertical 15s linear infinite!important; /* Duración ajustable */
 }
 
 .carousel-track img {
-  width: 100%;
-  height: auto;             /* Mantiene la proporción original */
-  object-fit: cover;
+  width: 100%!important;
+  height: auto!important;             /* Mantiene la proporción original */
+  object-fit: cover!important;
 }
 
 /* Animación vertical del carrusel para 2 imágenes */
