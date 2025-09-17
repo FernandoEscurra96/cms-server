@@ -225,6 +225,7 @@ fetchProduct();
     line-height: 1.1 !important;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
     padding: 0px!important;
+    max-width: 100%!important;
 }
 
 .product-description {
@@ -234,6 +235,7 @@ fetchProduct();
     margin-bottom: 3rem !important;
     /*max-width: 500px !important;*/
     padding: 0px!important;
+    max-width: 100%!important;
 }
 
 .product-price {
@@ -275,7 +277,7 @@ fetchProduct();
 }
 
 .buy-button {
-    flex: 2 !important;
+    /*flex: 2 !important;*/
     padding: 1.5rem 3rem !important;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
     color: white !important;
@@ -472,22 +474,15 @@ fetchProduct();
 
 /* (Se mantiene el resto de tu CSS igual que en tu ejemplo anterior) */
 </style>
-
-
-
-
   <section id="introduction" class="introduction">
       <div class="introduction-content">
           <h2></h2><div class="container-introduction">
             <!-- Izquierda -->
             <div id="introduction-text" class="introduction-text">
-                <span class="floating-badge">Premium</span>
-                <h2>Bienvenido</h2>
-                <p>Aquí va tu texto de introducción...</p></div>
-            <!-- Derecha -->
+            <span class="floating-badge">Premium</span></div><!-- Derecha -->
             <div class="introduction-image">
                 <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758064307/Generated_Image_September_16_2025_-_7_38PM_1_ynhseo.png" alt="Imagen de ejemplo">
-            </div></div><a href="#productos" class="cta-button"></a><a href="#introduction"><button class="cta-button">Más Info</button></a>
+            </div></div><div><a href="#productos" class="cta-button"></a><a href="#introduction"><button class="cta-button">Más Info</button></a></div>
       </div>
   </section>
 
