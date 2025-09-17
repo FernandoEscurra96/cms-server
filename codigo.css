@@ -90,3 +90,51 @@
             width: 100%!important;
             opacity: 0.1!important;
         }*/
+
+
+
+
+
+           /*.similar:nth-child(even) {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)!important;
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3)!important;
+        }
+        
+        .similar:nth-child(3n) {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)!important;
+            box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3)!important;
+        }*/
+        
+        /*.similar:hover {
+            transform: translateX(10px)!important;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2)!important;
+        }
+        
+        .similar::before {
+            content: ''!important;
+            position: absolute!important;
+            top: 0!important;
+            left: 0!important;
+            width: 5px!important;
+            height: 100%!important;
+            background: rgba(255,255,255,0.5)!important;
+            transition: width 0.3s ease!important;
+        }
+        
+        .similar:hover::before {
+            width: 100%!important;
+            opacity: 0.1!important;
+        }*/
+
+
+        <!--<div class="Conclusion-content">
+    <h2 class="Conclusion-title">Conclusion</h2>
+    
+    <div class="Conclusion">
+        <div class="Conclusion-text">
+           
+        </div>
+    </div>
+</div>-->
+
+

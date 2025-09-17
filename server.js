@@ -256,7 +256,7 @@ let faqData = {
         ctaLink: "#"
     },
     findings: {
-        title: "📊 Hallazgos Principales",
+        title: "Hallazgos Principales",
         key_findings: [
             "Durante el periodo de prueba de tres meses, el Cecotec Accesorios de Papel para Freidora de Aire Cecofry Paper Pack demostró ser un recurso esencial...",
             "Los usuarios destacaron la versatilidad del producto, utilizándolo no solo para freír, sino también para hornear...",
