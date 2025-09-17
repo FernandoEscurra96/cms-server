@@ -212,6 +212,18 @@ app.post('/api/competitors', (req, res) => {
 // Datos iniciales FAQ + Introduction
 // ==============================
 let faqData = {
+
+    productData: {
+        category: "Smartphone Premium JSON",
+        title: "iPhone 15 Pro Max",
+        description: "Experimenta el futuro en tus manos con el smartphone más avanzado. Chip A17 Pro revolucionario, sistema de cámaras profesional de 48MP y pantalla Super Retina XDR de 6.7 pulgadas que redefine la excelencia.",
+        priceOriginal: "$1,299",
+        priceCurrent: "$1,199",
+        priceDiscount: "-8%",
+        buyLink: "https://www.ejemplo.com/comprar-iphone",
+        image: "https://m.media-amazon.com/images/I/81PMIW46YHL._AC_SX679_.jpg"
+
+    },
     introduction: {
         title: "Productos Premium de JSON",
         subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
@@ -324,8 +336,37 @@ app.get('/api/html3', (req, res) => {
 
         // 3. Cargar HTML en Cheerio
         const $ = cheerio.load(html);
+        
+const $category = $('.product-category');
+$category.text(productData.category);
 
-        // ==============================
+const $title = $('.product-title');
+$title.text(productData.title);
+
+const $description = $('.product-description');
+$description.text(productData.description);
+
+const $priceOriginal = $('.price-original');
+$priceOriginal.text(productData.priceOriginal);
+
+const $priceCurrent = $('.price-current');
+$priceCurrent.text(productData.priceCurrent);
+
+const $priceDiscount = $('.price-discount');
+$priceDiscount.text(productData.priceDiscount);
+
+const $productImageDiv = $('.product-image');
+const $img = $productImageDiv.find('img');
+
+// Cambiar src y alt
+$img.attr('src', productData.image);       // URL de la imagen
+//$img.attr('alt', productData.title);      
+// Reemplazar botón por enlace
+const $buyButton = $('.buy-button');
+$buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comprar Ahora</a>`);;
+        
+
+// ==============================
         // Renderizar Introducción
         // ==============================
         const intro = faqData.introduction;
