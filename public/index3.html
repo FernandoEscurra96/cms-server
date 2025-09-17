@@ -224,6 +224,7 @@ fetchProduct();
     margin-bottom: 2rem !important;
     line-height: 1.1 !important;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    padding: 0px!important;
 }
 
 .product-description {
@@ -231,7 +232,8 @@ fetchProduct();
     font-size: 1.4rem !important;
     line-height: 1.6 !important;
     margin-bottom: 3rem !important;
-    max-width: 500px !important;
+    /*max-width: 500px !important;*/
+    padding: 0px!important;
 }
 
 .product-price {
@@ -1404,61 +1406,61 @@ fetchFaqData();
         /* Contenedor Flexbox principal */
 /* Contenedor Flexbox */
 .container-introduction {
-  display: flex;
-  flex-wrap: wrap; /* responsive */
-  gap: 20px;
-  width: 100%;
-  align-items: center;
-  padding: 20px;
+  display: flex!important;
+  flex-wrap: wrap!important; /* responsive */
+  gap: 20px!important;
+  width: 100%!important;
+  align-items: center!important;
+  padding: 20px!important;
 }
 
 /* Card moderna */
 .introduction-text {
-  flex: 1;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  opacity: 0;
-  transform: translateX(-50px);
-  animation: slideInLeft 1s ease-out forwards;
-  animation-delay: 0.3s;
+  flex: 1!important;
+  background: #ffffff!important;
+  border-radius: 16px!important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1)!important;
+  padding: 30px!important;
+  display: flex!important;
+  flex-direction: column!important;
+  gap: 15px!important;
+  opacity: 0!important;
+  transform: translateX(-50px)!important;
+  animation: slideInLeft 1s ease-out forwards!important;
+  animation-delay: 0.3s!important;
 }
 
 /* Tipografía */
 .introduction-text h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #2C3E50;
-  margin: 0;
+  font-size: 2rem!important;
+  font-weight: 700!important;
+  color: #2C3E50!important;
+  margin: 0!important;
 }
 
 .introduction-text p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #4a4a4a;
-  margin: 0;
+  font-size: 1.1rem!important;
+  line-height: 1.6!important;
+  color: #4a4a4a!important;
+  margin: 0!important;
 }
 
 /* Imagen derecha */
 .introduction-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1!important;
+  display: flex!important;
+  justify-content: center!important;
+  align-items: center!important;
 }
 
 .introduction-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 16px;
-  opacity: 0;
-  transform: translateX(50px);
-  animation: slideInRight 1s ease-out forwards;
-  animation-delay: 0.5s;
+  max-width: 100%!important;
+  height: auto!important;
+  border-radius: 16px!important;
+  opacity: 1!important;
+  transform: translateX(50px)!important;
+  animation: slideInRight 1s ease-out forwards!important;
+  animation-delay: 0.5s!important;
 }
 
 /* Animaciones */
@@ -1474,37 +1476,37 @@ fetchFaqData();
 
 /* Botón CTA */
 .cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  color: white;
-  font-weight: 600;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  display: inline-block!important;
+  margin-top: 20px!important;
+  padding: 12px 24px!important;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)!important;
+  color: white!important;
+  font-weight: 600!important;
+  border-radius: 8px!important;
+  text-decoration: none!important;
+  transition: all 0.3s ease!important;
 }
 
 .cta-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+  transform: translateY(-3px)!important;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2)!important;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .container-introduction {
-    flex-direction: column;
+    flex-direction: column!important;
   }
   .introduction-text, .introduction-image {
-    flex: 1 1 100%;
+    flex: 1 1 100%!important;
   }
   .introduction-text {
-    transform: translateY(30px); /* slide desde abajo en móviles */
-    animation-name: slideUp; /* animación vertical para móviles */
+    transform: translateY(30px)!important; /* slide desde abajo en móviles */
+    animation-name: slideUp!important; /* animación vertical para móviles */
   }
   .introduction-image img {
-    transform: translateY(30px);
-    animation-name: slideUp;
+    transform: translateY(30px)!important;
+    animation-name: slideUp!important;
   }
 }
 
@@ -1516,18 +1518,18 @@ fetchFaqData();
 
 /* Posicionamos el card como relativo para el badge */
 .introduction-text {
-  position: relative; /* necesario para que el badge flote sobre el card */
-  flex: 1;
+  position: relative!important; /* necesario para que el badge flote sobre el card */
+  flex: 1!important;
   /*background: black ;*/
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: all 1s ease-out;
+  border-radius: 16px!important;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1)!important;
+  padding: 30px!important;
+  display: flex!important;
+  flex-direction: column!important;
+  gap: 15px!important;
+  opacity: 1!important;
+  transform: translateX(-50px)!important;
+  transition: all 1s ease-out!important;
   text-align: center!important;
   color: black!important;
 }
