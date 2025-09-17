@@ -26,7 +26,8 @@
 
             <div class="product-actions">
                 <button class="buy-button">Comprar Ahora</button>
-                <button class="secondary-button">Más Info</button>
+                <a href="#introduction"><button class="secondary-button">Más Info</button></a>
+                
             </div>
         </div>
     </div>
@@ -403,16 +404,95 @@ fetchProduct();
         border-radius: 15px!important;
         margin-bottom: 20px !important;
     }
+
+
+/* Contenedor Flexbox */
+.container-introduction {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Texto izquierda */
+.introduction-text {
+  flex: 1;
+  padding: 20px;
+  opacity: 0; /* Estado inicial invisible */
+  transform: translateX(-100px); /* Desplazado a la izquierda */
+  animation: slideInLeft 1s ease-out forwards;
+  animation-delay: 0.3s; /* Retraso opcional */
+}
+
+/* Imagen derecha */
+.introduction-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.introduction-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+
+  opacity: 0; /* Estado inicial invisible */
+  transform: translateX(100px); /* Desplazado a la derecha */
+  animation: slideInRight 1s ease-out forwards;
+  animation-delay: 0.5s; /* Retraso opcional */
+}
+
+/* Animación desde la izquierda (texto) */
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animación desde la derecha (imagen) */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* (Se mantiene el resto de tu CSS igual que en tu ejemplo anterior) */
 </style>
 
 
 
 
-  <section class="introduction">
+  <section id="introduction" class="introduction">
       <div class="introduction-content">
           <h2></h2>
-          <div id="introduction-text" class="introduction-text"></div>
+          <div class="container-introduction">
+            <!-- Izquierda -->
+            <div id="introduction-text" class="introduction-text">
+                <span class="floating-badge">Premium</span>
+                <h2>Bienvenido</h2>
+                <p>Aquí va tu texto de introducción...</p>
+
+
+                
+            </div>
+
+            <!-- Derecha -->
+            <div class="introduction-image">
+                <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758064307/Generated_Image_September_16_2025_-_7_38PM_1_ynhseo.png" alt="Imagen de ejemplo">
+            </div>
+            </div>
           <a href="#productos" class="cta-button"></a>
       </div>
   </section>
@@ -747,8 +827,9 @@ fetchFaqData();
 
 
         .introduction {
-            background: #2C3E50;
+           /* background: #2C3E50;*/
             /*linear-gradient(135deg, #667eea 0%, #764ba2 100%)!important;*/
+            background: #eff2f1;
             color: white!important;
             padding: 100px 0!important;
             position: relative!important;
@@ -1249,5 +1330,162 @@ fetchFaqData();
             //ax-width: 1200px !important;*/
             padding-top: 0px !important;
         }
+
+
+
+
+        /* Contenedor Flexbox principal */
+/* Contenedor Flexbox */
+.container-introduction {
+  display: flex;
+  flex-wrap: wrap; /* responsive */
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Card moderna */
+.introduction-text {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInLeft 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* Tipografía */
+.introduction-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2C3E50;
+  margin: 0;
+}
+
+.introduction-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  margin: 0;
+}
+
+/* Imagen derecha */
+.introduction-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.introduction-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* Animaciones */
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Botón CTA */
+.cta-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container-introduction {
+    flex-direction: column;
+  }
+  .introduction-text, .introduction-image {
+    flex: 1 1 100%;
+  }
+  .introduction-text {
+    transform: translateY(30px); /* slide desde abajo en móviles */
+    animation-name: slideUp; /* animación vertical para móviles */
+  }
+  .introduction-image img {
+    transform: translateY(30px);
+    animation-name: slideUp;
+  }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+
+/* Posicionamos el card como relativo para el badge */
+.introduction-text {
+  position: relative; /* necesario para que el badge flote sobre el card */
+  flex: 1;
+  /*background: black ;*/
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 1s ease-out;
+  text-align: center!important;
+  color: black!important;
+}
+
+/* Floating badge */
+.floating-badge {
+  position: absolute;
+  top: -10px; /* sale un poco por encima del card */
+  right: -10px; /* sale un poco por la derecha */
+  background-color: #FFD700; /* amarillo dorado */
+  color: #2C3E50;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size: 0.9rem;
+  pointer-events: none; /* no interfiere con clics */
+  animation: floatBadge 2s ease-in-out infinite alternate;
+}
+
+/* Animación flotante */
+@keyframes floatBadge {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
   </style>
 </body>
