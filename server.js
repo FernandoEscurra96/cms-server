@@ -481,6 +481,18 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
 
         $similarContainer.find('.similar-text').html(similarHtml);
 
+
+        //const $whyChooseSection = $('.img-wrap');
+        //$whyChooseSection.find('.img-fluid-why').src(productData.image);
+
+
+
+        const $productImageDivChoose = $('.img-wrap');
+        const $img_wrap = $productImageDivChoose.find('img');
+
+        // Cambiar src y alt
+        $img_wrap.attr('src', productData.image);       // URL d
+
         // ==============================
         // Devolver SOLO el contenido del body
         // ==============================
