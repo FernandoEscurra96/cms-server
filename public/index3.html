@@ -477,10 +477,8 @@ fetchProduct();
   <section id="introduction" class="introduction">
       <div class="introduction-content">
           <h2></h2><div class="container-introduction">
-            <!-- Izquierda -->
-            <div id="introduction-text" class="introduction-text">
-            <span class="floating-badge">Premium</span></div><!-- Derecha -->
-            <div class="introduction-image">
+            <!-- Izquierda --><div id="introduction-text" class="introduction-text">
+            <span class="floating-badge">Premium</span></div><!-- Derecha --><div class="introduction-image">
                 <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758064307/Generated_Image_September_16_2025_-_7_38PM_1_ynhseo.png" alt="Imagen de ejemplo">
             </div></div><div><a href="#productos" class="cta-button"></a><a href="#introduction"><button class="cta-button">Más Info</button></a></div>
       </div>
@@ -641,6 +639,30 @@ fetchProduct();
 		</div>
 		<!-- End Why Choose Us Section -->
 
+
+
+
+
+<div class="carousel">
+  <div class="carousel-track">
+
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_1_lneadv.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_2_tkmgmk.png" alt="Imagen 2">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075839/Generated_Image_September_16_2025_-_11_18PM_sajy9v.png" alt="Imagen 3">
+     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_1_lneadv.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_2_tkmgmk.png" alt="Imagen 2">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075839/Generated_Image_September_16_2025_-_11_18PM_sajy9v.png" alt="Imagen 3">
+
+    <!-- duplicamos imágenes para efecto infinito -->
+
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_1_lneadv.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_2_tkmgmk.png" alt="Imagen 2">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075839/Generated_Image_September_16_2025_-_11_18PM_sajy9v.png" alt="Imagen 3">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_1_lneadv.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075838/Generated_Image_September_16_2025_-_11_18PM_2_tkmgmk.png" alt="Imagen 2">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758075839/Generated_Image_September_16_2025_-_11_18PM_sajy9v.png" alt="Imagen 3">
+  </div>
+</div>
 
 <script>
 async function fetchFaqData() {
@@ -1562,6 +1584,37 @@ fetchFaqData();
       z-index: -1; }
     .why-choose-section .img-wrap img {
       border-radius: 20px; }
+
+
+
+.carousel {
+  width: 100% !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background: #f8f8f8 !important;
+  padding: 20px 0 !important;
+}
+
+.carousel-track {
+  display: flex !important;
+  width: calc(300px * 12) !important; /* 6 originales + 6 duplicadas */
+  animation: scroll 25s linear infinite !important;
+}
+
+.carousel img {
+  width: 300px !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  margin-right: 20px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* Animación de desplazamiento infinito */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* se mueve la mitad (6 de 12) */
+}
   </style>
 </body>
 
