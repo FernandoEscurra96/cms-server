@@ -395,7 +395,7 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
         $faqContainer.empty();
         faqData.faqs.forEach(faq => {
             const faqItem = `
-                <details class="faq-item">
+                <details class="faq-item" open>
                     <summary class="faq-question">${faq.question}</summary>
                     <div class="faq-answer">${faq.answer}</div>
                 </details>
@@ -464,7 +464,7 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
                 .join("");
 
             const errorItem = `
-                <details class="errors-item">
+                <details class="errors-item" open>
                     <summary class="errors-description">${descHtml}</summary>
                     <div class="errors-consequence">${consHtml}</div>
                 </details>
@@ -499,6 +499,14 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
 
         // Cambiar src y alt
         $img_wrap.attr('src', productData.image);       // URL d
+
+
+
+        const $horecaImageDivChoose = $('.img-wrap-horeca');
+        const $img_wrap_horeca = $horecaImageDivChoose.find('img');
+
+        // Cambiar src y alt
+        $img_wrap_horeca.attr('src', "https://res.cloudinary.com/dqgld1gyl/image/upload/v1758140119/Generated_Image_September_17_2025_-_5_14PM_gz5fbe.png");       // URL d
 
         // ==============================
         // Devolver SOLO el contenido del body
