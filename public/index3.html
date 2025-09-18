@@ -6,7 +6,7 @@
     <div class="decoration-2"></div>
     <div class="decoration-3"></div>-->
     
-    <div class="content-wrapper">
+    <!--<div class="content-wrapper">
         <div class="product-image-section">
             <div class="product-image">
                 <img src="" alt="Pritt Barra Adhesiva" class="product-image-img">
@@ -30,6 +30,34 @@
                 
             </div>
         </div>
+    </div>-->
+
+    <div class="container-introduction">
+        <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-6">
+            <div class="product-image">
+                <img src="" alt="Pritt Barra Adhesiva" class="product-image-img">
+            </div>
+        </div>
+        <div class="col-lg-5">
+                        <div class="product-category"></div>
+            <h1 class="product-title"></h1>
+            <p class="product-description"></p>
+            
+            <div class="product-price">
+                <span class="price-original"></span>
+                <span class="price-current"></span>
+                <span class="price-discount"></span>
+            </div>
+
+            <div class="product-actions">
+                <button class="buy-button">Comprar Ahora</button>
+                <a href="#introduction"><button class="secondary-button">Más Info</button></a>
+                
+            </div>
+        </div>
+        </div>
+
     </div>
 </div>
 
@@ -405,7 +433,7 @@ fetchProduct();
 }
 
     .product-image-img {
-        width: 100%!important;
+        /*width: 100%!important;*/
         border-radius: 15px!important;
         margin-bottom: 20px !important;
     }
@@ -423,9 +451,9 @@ fetchProduct();
 .introduction-text {
   flex: 1;
   padding: 20px;
-  opacity: 0; /* Estado inicial invisible */
-  transform: translateX(-100px); /* Desplazado a la izquierda */
-  animation: slideInLeft 1s ease-out forwards;
+  opacity: 1; /* Estado inicial invisible */
+  /*transform: translateX(-100px); /* Desplazado a la izquierda */
+  /*animation: slideInLeft 1s ease-out forwards;
   animation-delay: 0.3s; /* Retraso opcional */
 }
 
@@ -484,7 +512,7 @@ fetchProduct();
 						<p>Precios competitivos: ofertas y descuentos frecuentes que te ayudan a ahorrar</p>
 						<div class="row my-5">
                 <div id="introduction-text" class="introduction-text">
-                    <span class="floating-badge">Premium</span>
+                    
                 </div></div>
 
                 <div class="row my-5 buttons-container">
@@ -648,8 +676,23 @@ fetchProduct();
 
 
 
-
-  <section id="Conclusion" class="conclusion">
+<div class="why-choose-section">
+     <div class="row g-0 justify-content-between align-items-center">
+                    <div class="col-lg-6">
+                        <h2 class="section-title-conclusion">¿Por qué comprar en Amazon?</h2>
+                        <div id="conclusion-text" class="conclusion-text"></div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="carousel-vertical">
+  <div class="carousel-track">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 2">
+  </div>
+</div>
+                    </div>
+     </div>
+</div>
+  <!--<section id="Conclusion" class="conclusion">
       <div class="conclusion-content">
           <h2></h2><div class="container-conclusion"><div id="conclusion-text" class="conclusion-text">
             <span class="floating-badge">Premium</span>
@@ -658,7 +701,7 @@ fetchProduct();
     
     <div class="Conclusion">
         <div class="Conclusion-text">
-            <!-- Texto dinámico desde JSON -->
+            
         </div>
     </div>
 </div></div><div class="introduction-image">
@@ -669,7 +712,7 @@ fetchProduct();
     <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 2">
   </div>
 </div>
-</div>
+</div>-->
             </div></div><div></div>
       </div>
   </section>
@@ -833,7 +876,7 @@ function renderFindings(findings) {
 
 // Renderizar Conclusion
 function renderConclusion(conclusion) {
-    document.querySelector(".Conclusion-title").textContent = conclusion.title;
+    document.querySelector(".section-title-conclusion").textContent = conclusion.title;
     document.querySelector(".Conclusion-text").textContent = conclusion.text;
 }
 
@@ -927,7 +970,7 @@ fetchFaqData();
     .faq-section {
       padding: 100px 0 !important;
       background: white !important;
-      padding: 20rem 12rem !important;
+      padding: 10rem 12rem !important;
     }
 
     .faq-item {
@@ -1076,9 +1119,19 @@ fetchFaqData();
 
         /* Pricing Section */
         .pricing {
-            padding: 120px 0!important;
+           /* padding: 120px 0!important;
             /*background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);*/
-            padding: 10rem 12rem !important;
+            /*padding: 10rem 12rem !important;
+            background: #eff2f1;*/
+
+
+            padding: 40px!important;
+            /*background: #eff2f1;*/
+            background-color: white!important;
+            /*padding: 20rem 12rem !important;*/
+            max-width: 80%;
+             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* sombra moderna */
+             margin: 50px auto;
         }
 
         .pricing-container {
@@ -1087,11 +1140,14 @@ fetchFaqData();
             text-align: center!important;
             background: rgba(255, 255, 255, 0.05)!important;
             padding: 60px 40px!important;
-            border-radius: 30px!important;
+            /*border-radius: 30px!important;*/
             backdrop-filter: blur(20px)!important;
-            border: 1px solid black!important;
+            /*border: 1px solid black!important;*/
             position: relative!important;
             overflow: hidden!important;
+
+
+            
         }
 
         .pricing-container::before {
@@ -1221,10 +1277,10 @@ fetchFaqData();
             box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3)!important;
         }
         
-        .finding:hover {
+        /*.finding:hover {
             transform: translateX(10px)!important;
             box-shadow: 0 15px 40px rgba(0,0,0,0.2)!important;
-        }
+        }*/
         
         .finding::before {
             content: ''!important;
@@ -1391,7 +1447,7 @@ fetchFaqData();
 
         .similar-content {
             padding: 40px!important;
-            padding: 20rem 12rem !important;
+            padding: 10rem 12rem !important;
         }
         .similar-title {
             font-size: 3rem!important;
@@ -1454,8 +1510,19 @@ fetchFaqData();
   width: 100%!important;
   align-items: center!important;
   padding: 20px!important;
+  
 }
 
+/* Contenedor Flexbox */
+.container-conclusion {
+  display: flex!important;
+  flex-wrap: wrap!important; /* responsive */
+  gap: 20px!important;
+  width: 100%!important;
+  align-items: center!important;
+  padding: 20px!important;
+  background: #eff2f1;
+}
 /* Card moderna */
 /*.introduction-text {
   flex: 1!important;
@@ -1757,20 +1824,13 @@ fetchFaqData();
             padding: 20px;
             }
             .conclusion-text {
-            position: relative!important; /* necesario para que el badge flote sobre el card */
-            flex: 1!important;
-            /*background: black ;*/
-            border-radius: 16px!important;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1)!important;
-            padding: 30px!important;
-            display: flex!important;
-            flex-direction: column!important;
-            gap: 15px!important;
-            opacity: 1!important;
-            transform: translateX(-50px)!important;
-            transition: all 1s ease-out!important;
-            text-align: center!important;
-            color: black!important;
+display: flex;
+  justify-content: flex-end; /* empuja el contenido a la derecha */
+  /*align-items: center;  */     /* opcional: centra verticalmente */
+  padding: 30px;             /* mantiene el espacio interior */
+  gap: 15px;                 /* espacio entre elementos internos */
+ /* text-align: right;     */    /* alinea el texto a la derecha */
+  color: black;
             }
 
         .conclusion-content {
@@ -1807,55 +1867,83 @@ fetchFaqData();
 }
 
 .buttons-container {
-    display: flex;
-    gap: 20px;       /* Espacio entre botones */
+    display: flex!important;
+    gap: 20px!important;       /* Espacio entre botones */
 }
 
 .buttons-container a {
-    flex: 1;         /* Cada enlace ocupa 50% del div */
+    flex: 1!important;         /* Cada enlace ocupa 50% del div */
 }
 
 .buttons-container button {
-    width: 100%;
-    padding: 15px 0;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;      /* Espacio entre icono y texto */
-    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%!important;
+    padding: 15px 0!important;
+    font-size: 1.1rem!important;
+    font-weight: 600!important;
+    border: none!important;
+    border-radius: 12px!important;
+    cursor: pointer!important;
+    display: flex!important;
+    align-items: center!important;
+    justify-content: center!important;
+    gap: 10px!important;      /* Espacio entre icono y texto */
+    transition: transform 0.2s, box-shadow 0.2s!important;
 }
 
 /* Botón Comprar azul */
 .btn-comprar {
-    background-color: #3498db;
-    color: white;
+    background-color: #3498db!important;
+    color: white!important;
 }
 
 .btn-comprar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transform: scale(1.05)!important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2)!important;
 }
 
 /* Botón Más Info amarillo */
 .btn-info {
-    background-color: #f1c40f;
-    color: #2C3E50;
+    background-color: #f1c40f!important;
+    color: #2C3E50!important;
 }
 
 .btn-info:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transform: scale(1.05)!important;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2)!important;
 }
 
 /* Iconos dentro del botón */
 .icon {
-    font-size: 1.2rem;
+    font-size: 1.2rem!important;
 }
+
+
+
+    .why-choose-section h2 {
+      font-size: 3rem !important;
+      font-weight: 700 !important;
+      margin-bottom: 3rem !important;
+      text-align: center !important;
+      /*color: var(--dark-color) !important;*/
+      color: black !important;
+      position: relative !important;
+    }
+
+
+.product-image {
+  display: flex!important;
+  justify-content: flex-end!important; /* empuja la imagen a la derecha */
+}
+.conclusion-text-1 {
+  display: flex!important;
+  justify-content: flex-end!important; /* empuja la imagen a la derecha */
+}
+
+.product-image-img {
+  max-width: 100%!important;
+  height: auto!important;
+}
+
   </style>
 </body>
 

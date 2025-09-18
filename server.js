@@ -242,7 +242,7 @@ let faqData = {
         }
     ],
     pricing: {
-        title: "Inversión en tu Futuro",
+        title: "Caracteristicas Únicas",
         price: "$299",
         subtitle: "Pago único - Valor de por vida",
         unique_features: [
@@ -265,11 +265,11 @@ let faqData = {
         ]
     },
     conclusion: {
-        title: "Conclusión",
+        title: "Nuestro resumen",
         text: "El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario. <br> El Cecofry Paper Pack se consolida como un accesorio esencial que combina practicidad, sostenibilidad y eficiencia, aportando valor real a la experiencia del usuario."
     },
     errors: {
-        title: "Errores comunes al comprar",
+        title: "Estos son los errores comunes al comprar",
         items: [
         {
             description: "Error 1: No se carga la página",
@@ -369,7 +369,7 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
 // ==============================
         // Renderizar Introducción
         // ==============================
-        const intro = faqData.introduction;
+        /*const intro = faqData.introduction;
         const $intro = $('.introduction');
         $intro.find('h2').text(intro.title);
 
@@ -379,8 +379,15 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
 
         const $cta = $intro.find('.cta-button');
         $cta.text(intro.ctaText);
-        $cta.attr('href', intro.ctaLink);
+        $cta.attr('href', intro.ctaLink);*/
 
+        //document.querySelector(".why-choose-section .introduction-text").textContent = intro.subtitle;
+
+        const intro = faqData.introduction
+        const $intro = $('.why-choose-section');
+        const lines = intro.subtitle.split('\n').filter(line => line.trim() !== '');
+        const subtitleHtml = lines.map(line => `<div>${line.trim()}</div>`).join('');
+        $intro.find('.introduction-text').html(subtitleHtml);
         // ==============================
         // Renderizar FAQs
         // ==============================
