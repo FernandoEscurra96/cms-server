@@ -211,7 +211,7 @@ app.post('/api/competitors', (req, res) => {
 // ==============================
 // Datos iniciales FAQ + Introduction
 // ==============================
-let faqData = {
+/*let faqData = {
 
     productData: {
         category: "1 Smartphone Premium JSON",
@@ -285,7 +285,106 @@ let faqData = {
         title: "Productos Similares",
         text: "Explora alternativas que también ofrecen practicidad y sostenibilidad.\nModelos de otras marcas incluyen opciones reutilizables de silicona.\nEstos pueden complementar o reemplazar el uso de papeles desechables."
     }
-};
+};*/
+
+
+let faqData = {
+    
+      "productData": {
+        "category": "kitchen",
+        "title": "Utopia Bedding: Protector Colchón Impermeable y Transpirable",
+        "description": "1 Experimenta el futuro en tus manos con el smartphone más avanzado. Chip A17 Pro revolucionario, sistema de cámaras profesional de 48MP y pantalla Super Retina XDR de 6.7 pulgadas que redefine la excelencia.",
+        "priceOriginal": "$1,299",
+        "priceCurrent": "$1,199",
+        "priceDiscount": "8%",
+        "buyLink": "https://www.amazon.es/dp/B077T9VNSB/?tag=horecarentabl-21",
+        "image": "https://images-eu.ssl-images-amazon.com/images/I/71e7b+OmvbL._AC_UL900_SR900,600_.jpg"
+
+    },
+    "introduction":{"title":"Utopia Bedding: Protector Colchón Impermeable y Transpirable","subtitle":"''El protector de colchón Utopia Bedding 135 x 190 x 40 cm es uno de los favoritos para quienes buscan protección sin renunciar a la comodidad. Destaca por su impermeabilidad, certificación Oeko-Tex y excelente ajuste. Analizamos a fondo sus características, resultados y lo comparamos con rivales para guiarte en tu compra. \n \nCEO Marketing Horecarentable''","ctaText":"Comprar Ahora","ctaLink":"https://www.amazon.es/dp/B077T9VNSB/?tag=horecarentabl-21",
+    "image": "https://m.media-amazon.com/images/I/81PMIW46YHL._AC_SX679_.jpg"},"title":"Preguntas Frecuentes",
+    "faqs":[
+{
+      "question": "¿El protector de Utopia Bedding es 100% impermeable?",
+      "answer": "Sí, la membrana de poliuretano impide el paso de cualquier líquido. Incluso tras múltiples lavados y con líquidos calientes o fríos, el colchón queda totalmente protegido."
+    },
+    {
+      "question": "¿Genera sensación de calor o sudor al dormir?",
+      "answer": "No, la capa superior de algodón permite la circulación de aire, evitando sensación plástica y manteniendo una temperatura agradable y seca en cualquier estación."
+    },
+    {
+      "question": "¿Es fácil de instalar y se ajusta a colchones altos?",
+      "answer": "La altura de los laterales (40 cm) y la banda elástica garantizan un ajuste perfecto incluso en colchones viscoelásticos o con topper. No se mueve ni se arruga."
+    },
+    {
+      "question": "¿Interfiere con la comodidad del colchón?",
+      "answer": "No, por el contrario: la suavidad de la superficie aporta confort extra, sin añadir grosor o rigidez, ni modificar la sensación original del colchón."
+    },
+    {
+      "question": "¿Es resistente a lavados frecuentes?",
+      "answer": "Sí, está pensado para lavados regulares y uso diario. No encoge, no se deforma y mantiene su impermeabilidad tras múltiples ciclos de lavado en lavadora."
+    },
+    {
+      "question": "¿El producto tiene certificación de seguridad?",
+      "answer": "Sí, está certificado por el estándar Oeko-Tex, lo que garantiza materiales seguros para bebés, niños y personas alérgicas."
+    },
+    {
+      "question": "¿El protector hace ruido al moverse?",
+      "answer": "No, gracias al diseño y al tipo de membrana, es uno de los protectores más silenciosos del mercado."
+    }],
+    "pricing":
+    {"title":"Caracteristica Únicas","price":"$4","subtitle":"Pago único - Valor de por vida",
+    "unique_features":["Certificación Oeko-Tex: Esta funda de colchón cuenta con uno de los certificados más reconocidos del mundo textil, asegurando que ninguno de sus materiales contiene químicos peligrosos o tóxicos, lo cual es fundamental para personas alérgicas, con piel sensible, bebés o personas mayores.",
+      "Impermeabilidad total y discreta: Muchos protectores prometen resistencia frente a líquidos pero fallan en la práctica. Utopia Bedding implementa una membrana de poliuretano ultra delgada e invisible, que ha demostrado mantener el colchón completamente seco en todo tipo de situaciones, desde accidentes infantiles, mascotas, derrames accidentales y sudor abundante. A diferencia de fundas vinílicas, la sensación al tacto es similar al algodón normal, sin efectos plastificados.",
+      "Adaptabilidad universal: El diseño con esquinas de 40 cm permite instalar el protector en colchones gruesos, modelos con topper o combinados. No importa si el colchón es viscoelástico, de muelles o espuma: el ajuste es perfecto y la goma perimetral de alta calidad mantiene todo en su lugar, evitando movimientos indeseados y pliegues que puedan incomodar durante la noche.",
+      "Soporte para uso intensivo: Gracias a su confección reforzada y a la resistencia del tejido, este protector es idóneo para hogares con niños pequeños o mascotas. Su fácil limpieza y rápida capacidad de secado lo hacen perfecto para situaciones donde sea necesario un lavado frecuente.",
+      "Silencio y confort térmico: Un fallo común en fundas impermeables es que hacen ruido al moverse y aumentan la temperatura de la cama. Este modelo destaca por su discreción acústica y la total ausencia de sensación plástica o calurosa, ayudando incluso a conciliar mejor el sueño.",
+      "Facilidad de limpieza: Se puede lavar y secar a máquina, sin pérdida de propiedades. No requiere cuidados especiales ni limpieza en seco, lo que aporta eficiencia y ahorro de tiempo.",
+      "Superficie antialérgica: El acabado de algodón y la ausencia de productos irritantes evitan picores o alergias. Su diseño ayuda también a limitar la proliferación de ácaros y bacterias, contribuyendo a la salud a largo plazo del durmiente.",
+      "Relación calidad/precio óptima: Comparado con otros protectores de gama similar, Utopia Bedding mantiene un precio competitivo sin sacrificar prestaciones clave, como durabilidad, confiabilidad o sensación natural.",
+      "Apariencia y discreción: El blanco mate es discreto, elegante y no transparenta bajo la sábana, integrándose perfectamente en la cama y el dormitorio.",
+      "Versatilidad: Es adecuado tanto para adultos como para niños, camas de invitados o alquileres vacacionales, y soporta exigencias de lavado diario sin perder sus características."],"ctaText":"Comprar Ahora","ctaLink":"https://www.amazon.es/dp/B077T9VNSB/?tag=horecarentabl-21"},
+    "findings":
+    {"title":"Hallazgos Principales",
+    "key_findings":["Impermeabilidad comprobada: Este protector ha sido testado de manera rigurosa y diferentes líquidos (agua, café, leche, jugo y orina) no lograron atravesar la barrera de poliuretano, manteniendo el colchón absolutamente seco. Además, la impermeabilidad se mantuvo intacta tras 15 lavados.",
+      "Transpirabilidad efectiva: La membrana impide el paso de líquidos pero sí permite el traspaso de aire. Esto evita sensación de calor incluso en verano, ya que el aire circula y ayuda a acelerar la evaporación de la humedad ambiental. Es notable la ausencia de sudoración extra comparando con otras fundas impermeables de plástico.",
+      "Ajuste superior: Las esquinas de 40 cm y la goma elástica aseguran que el protector no se desplace ni forme arrugas, abarcando tanto colchones estándar como extra-alto y de diferentes firmezas. Incluso con movimientos nocturnos fuertes o al sentarse en el borde, el protector queda siempre en su sitio.",
+      "Confort y suavidad: La capa superior de rizo de algodón destaca por su suavidad. Al tacto no se percibe plástico ni rugosidad, lo que mejora la experiencia directa y no altera la sensación de la sábana.",
+      "Silencioso: El Utopia Bedding es uno de los protectores que menos ruido hace. Al moverse o girarse en la cama el sonido es mínimo, a diferencia de otros protectores con recubrimiento plástico o vinílico que crujen.",
+      "Facilidad de mantenimiento: Se puede lavar a máquina hasta 40°C. Mantiene su forma, no encoge ni se deforma y no pierde impermeabilidad. Las costuras y la goma elástica resisten bien los lavados.",
+      "Ausencia de olores químicos: Desde el desembalaje, el producto no presenta olores plásticos ni químicos. Ideal para usuarios sensibles.",
+      "Apto para alérgicos: La certificación Oeko-Tex asegura que el protector no incluye sustancias nocivas. Al no retener ácaros ni polvo, también es ideal para quienes sufren de alergias.",
+      "Durabilidad: Tras más de 100 noches de uso constante y más de una docena de lavados, el protector mantiene todas sus propiedades y no muestra desgaste ni pérdida de impermeabilidad o ajuste."]},
+    "conclusion":{
+        "title":"Nuestro resumen",
+        "text":"El Utopia Bedding Protector Colchón 135 x 190 x 40 cm es una solución completa para proteger tu colchón contra líquidos y alérgenos, con la máxima comodidad. Destaca su alto rendimiento, suavidad, silencio, ajuste perfecto y resistencia a lavados. Su relación calidad-precio es excelente, y su certificación Oeko-Tex lo hace seguro para todos. Ideal para uso en hogares y alquileres"},
+    "errors":
+    {"title":"Errores comunes al comprar",
+    "items":[
+{
+        "description": "Seleccionar funda de tamaño incorrecto para el colchón.",
+        "consequence": "Quedará holgada, hará pliegues o no cubrirá bien el colchón, pudiendo filtrarse líquidos."
+      },
+      {
+        "description": "Lavar con programas a más de 40°C o usar secadora en modo intensivo.",
+        "consequence": "Podría deteriorar la membrana impermeable y acortar la vida útil del producto."
+      },
+      {
+        "description": "Aplicar suavizantes o productos químicos agresivos.",
+        "consequence": "Se puede perder la impermeabilidad y afectar la textura."
+      },
+      {
+        "description": "No revisar las costuras antes del primer uso.",
+        "consequence": "Podría haber defectos de fábrica y no notarse a tiempo, comprometiendo la protección."
+      },
+      {
+        "description": "Instalar la funda sin ajustar bien la goma elástica a las esquinas.",
+        "consequence": "El protector podría moverse y dejar zonas sin protección efectiva."
+      }
+        ]}
+        
+        ,
+    "similar":{"title":"Productos Similares","text":"El protector de colchón Dreamzie 135 x 190 x 30 cm es una opción comparable. Ofrece también impermeabilidad y certificación Oeko-Tex, lo que lo hace seguro para alérgicos y niños. Su capa superior es de tencel, un material suave y fresco obtenido de la celulosa, proporcionando gran transpirabilidad y una textura sedosa. Sin embargo, su capacidad de ajuste es menor debido a los 30 cm de altura, por lo que puede no adaptarse perfectamente a colchones extra-gruesos. En términos de impermeabilidad, Dreamzie cumple bien, pero algunos usuarios reportan filtraciones tras muchos lavados, por no asegurar tan bien las costuras perimetrales como Utopia Bedding. Dreamzie ofrece también facilidad de lavado, ausencia de olores iniciales y un precio competitivo, a menudo algo más bajo que Utopia. Si buscas una funda más económica y tu colchón no es demasiado alto, es una gran opción, sobre todo para apartamentos, alojamientos turísticos o camas de niños. Si priorizas resistencia, ajuste y máxima durabilidad, Utopia Bedding es superior, especialmente si el colchón requiere protección diaria y limpieza frecuente. En conclusión, ambos son excelentes, pero Utopia Bedding lidera en robustez, elasticidad y protección para colchones altos."}}
 
 // ==============================
 // Endpoint para obtener FAQs
