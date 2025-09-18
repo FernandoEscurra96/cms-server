@@ -59,10 +59,11 @@ function renderProduct(data) {
     //img.src =  data.image; 
     //img.alt = "Imagen cambiada dinámicamente";
 
-    //const buyButton = document.querySelector('.buy-button');
-    //buyButton.onclick = () => {
-    //    window.location.href = data.buyLink;
-    //};
+    const buyButton = document.querySelector('.buy-button');
+
+buyButton.addEventListener('click', () => {
+  window.location.href = data.buyLink;
+});
     console.log(data.image);
     document.querySelector(".product-image-img").src = data.image;
     document.querySelector(".img-fluid-why").src = data.image;
@@ -1639,44 +1640,46 @@ fetchFaqData();
 
 
 .why-choose-section {
-  padding: 7rem 0; 
+  padding: 7rem 0!important; 
   padding: 10rem 12rem !important;
-  background: #eff2f1;
+  background: #eff2f1!important;
 }
   .why-choose-section .img-wrap {
-    position: relative; }
+    position: relative!important; }
     .why-choose-section .img-wrap:before {
-      position: absolute;
-      content: "";
-      width: 255px;
-      height: 217px;
+      position: absolute!important;
+      content: ""!important;
+      width: 255px!important;
+      height: 217px!important;
       background-image: url("http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069169/dots-yellow_p1x0az.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      -webkit-transform: translate(-40%, -40%);
-      -ms-transform: translate(-40%, -40%);
-      transform: translate(-40%, -40%);
+      background-repeat: no-repeat!important;
+      background-size: contain!important;
+      -webkit-transform: translate(-40%, -40%)!important;
+      -ms-transform: translate(-40%, -40%)!important;
+      transform: translate(-40%, -40%)!important;
       z-index: -1; }
     .why-choose-section .img-wrap img {
-      border-radius: 20px; }
+      border-radius: 20px!important;
+      max-width: 120%!important;
+    }
 
 
     .why-choose-section .img-wrap-horeca {
-    position: relative; }
+    position: relative!important; }
     .why-choose-section .img-wrap-horeca:before {
-      position: absolute;
-      content: "";
-      width: 255px;
-      height: 217px;
+      position: absolute!important;
+      content: ""!important;
+      width: 255px!important;
+      height: 217px!important;
       background-image: url("http://res.cloudinary.com/dqgld1gyl/image/upload/v1758069169/dots-yellow_p1x0az.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      -webkit-transform: translate(-40%, -40%);
-      -ms-transform: translate(-40%, -40%);
-      transform: translate(-40%, -40%);
-      z-index: -1; }
+      background-repeat: no-repeat!important;
+      background-size: contain!important;
+      -webkit-transform: translate(-40%, -40%)!important;
+      -ms-transform: translate(-40%, -40%)!important;
+      transform: translate(-40%, -40%)!important;
+      z-index: -1!important; }
     .why-choose-section .img-wrap-horeca img {
-      border-radius: 20px; }
+      border-radius: 20px!important; }
 
 
 
@@ -1922,6 +1925,7 @@ display: flex;
 .product-image {
   display: flex!important;
   justify-content: flex-end!important; /* empuja la imagen a la derecha */
+  /*max-width: 70%!important;*/
 }
 .conclusion-text-1 {
   display: flex!important;
