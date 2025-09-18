@@ -214,18 +214,18 @@ app.post('/api/competitors', (req, res) => {
 let faqData = {
 
     productData: {
-        category: "Smartphone Premium JSON",
-        title: "iPhone 15 Pro Max",
-        description: "Experimenta el futuro en tus manos con el smartphone más avanzado. Chip A17 Pro revolucionario, sistema de cámaras profesional de 48MP y pantalla Super Retina XDR de 6.7 pulgadas que redefine la excelencia.",
+        category: "1 Smartphone Premium JSON",
+        title: "1 iPhone 15 Pro Max",
+        description: "1 Experimenta el futuro en tus manos con el smartphone más avanzado. Chip A17 Pro revolucionario, sistema de cámaras profesional de 48MP y pantalla Super Retina XDR de 6.7 pulgadas que redefine la excelencia.",
         priceOriginal: "$1,299",
         priceCurrent: "$1,199",
-        priceDiscount: "-8%",
+        priceDiscount: "8%",
         buyLink: "https://www.ejemplo.com/comprar-iphone",
         image: "https://m.media-amazon.com/images/I/81PMIW46YHL._AC_SX679_.jpg"
 
     },
     introduction: {
-        title: "Horeca te recomienda",
+        title: "1 Horeca te recomienda",
         subtitle: "JSON Descubre nuestra colección exclusiva de productos diseñados para elevar tu experiencia",
         ctaText: "Comprar Ahora",
         ctaLink: "#productos"

@@ -1,39 +1,8 @@
 <body><div class="product-container">
     <div class="floating-badge">Destacado</div>
     
-    <!-- Elementos decorativos -->
-    <!--<div class="decoration-1"></div>
-    <div class="decoration-2"></div>
-    <div class="decoration-3"></div>-->
-    
-    <!--<div class="content-wrapper">
-        <div class="product-image-section">
-            <div class="product-image">
-                <img src="" alt="Pritt Barra Adhesiva" class="product-image-img">
-            </div>
-        </div>
-        
-        <div class="product-details">
-            <div class="product-category"></div>
-            <h1 class="product-title"></h1>
-            <p class="product-description"></p>
-            
-            <div class="product-price">
-                <span class="price-original"></span>
-                <span class="price-current"></span>
-                <span class="price-discount"></span>
-            </div>
-
-            <div class="product-actions">
-                <button class="buy-button">Comprar Ahora</button>
-                <a href="#introduction"><button class="secondary-button">Más Info</button></a>
-                
-            </div>
-        </div>
-    </div>-->
-
     <div class="container-introduction">
-        <div class="row justify-content-between align-items-center">
+        <div class="row justify-content-between align-items-center row-intro">
                     <div class="col-lg-6">
             <div class="product-image">
                 <img src="" alt="Pritt Barra Adhesiva" class="product-image-img">
@@ -65,9 +34,9 @@
 // Función para cargar datos del producto desde el endpoint
 async function fetchProduct() {
     try {
-        const response = await fetch('/api/product');
+        const response = await fetch('/api/faq');
         const data = await response.json();
-        renderProduct(data);
+        renderProduct(data.productData);
     } catch (err) {
         console.error("Error cargando el producto:", err);
     }
@@ -79,7 +48,7 @@ function renderProduct(data) {
     console.log("render product");
     document.querySelector('.product-category').textContent = data.category;
     document.querySelector('.product-title').textContent = data.title;
-    document.querySelector('.product-description').textContent = data.description;
+    //document.querySelector('.product-description').textContent = data.description;
     document.querySelector('.price-original').textContent = data.priceOriginal;
     document.querySelector('.price-current').textContent = data.priceCurrent;
     document.querySelector('.price-discount').textContent = data.priceDiscount;
@@ -90,10 +59,11 @@ function renderProduct(data) {
     //img.src =  data.image; 
     //img.alt = "Imagen cambiada dinámicamente";
 
-    const buyButton = document.querySelector('.buy-button');
-    buyButton.onclick = () => {
-        window.location.href = data.buyLink;
-    };
+    //const buyButton = document.querySelector('.buy-button');
+    //buyButton.onclick = () => {
+    //    window.location.href = data.buyLink;
+    //};
+    console.log(data.image);
     document.querySelector(".product-image-img").src = data.image;
     document.querySelector(".img-fluid-why").src = data.image;
 
@@ -638,8 +608,8 @@ fetchProduct();
         <h2 class="section-title"></h2>
         <div class="pricing-container">
             <div class="pricing-content">
-                <div class="price"></div>
-                <div class="price-subtitle"></div>
+                <!--<div class="price"></div>
+                <div class="price-subtitle"></div>-->
                 
                 <ul class="features-list">
                     <li></li>
@@ -849,8 +819,8 @@ function renderFaqs(data) {
 // Renderizar Pricing
 function renderPricing(pricing) {
     document.querySelector(".pricing .section-title").textContent = pricing.title;
-    document.querySelector(".pricing .price").textContent = pricing.price;
-    document.querySelector(".pricing .price-subtitle").textContent = pricing.subtitle;
+    //document.querySelector(".pricing .price").textContent = pricing.price;
+    //document.querySelector(".pricing .price-subtitle").textContent = pricing.subtitle;
 
     const featuresList = document.querySelector(".pricing .features-list");
     featuresList.innerHTML = pricing.unique_features.map(f => `<li>${f}</li>`).join("");
@@ -993,11 +963,10 @@ fetchFaqData();
       align-items: center !important;
       transition: all 0.3s ease !important;
       list-style: none !important;
+      font-size: 20px!important;
     }
 
-    /*.faq-question:hover {
-      background: var(--secondary-color) !important;
-    }*/
+
 
     .faq-answer {
       padding: 30px !important;
@@ -1010,7 +979,7 @@ fetchFaqData();
     .section-title {
       font-size: 3rem !important;
       font-weight: 700 !important;
-      margin-bottom: 3rem !important;
+      /*margin-bottom: 3rem !important;*/
       text-align: center !important;
       /*color: var(--dark-color) !important;*/
       color: black !important;
@@ -1244,7 +1213,7 @@ fetchFaqData();
         }
         
         .finding {
-            background: linear-gradient(135deg, #2C3E50 0%, #4facfe 80%, #00f2fe 100%) !important;
+            /*background: linear-gradient(135deg, #2C3E50 0%, #4facfe 80%, #00f2fe 100%) !important;*/
             margin: 25px 0!important;
             border-radius: 20px!important;
             padding: 25px!important;
@@ -1267,7 +1236,7 @@ fetchFaqData();
             background-image: linear-gradient(135deg, #2C3E50 0%, #4facfe 50%, #00f2fe 100%) !important;
         }
                     
-        .finding:nth-child(even) {
+        /*.finding:nth-child(even) {
             background:linear-gradient(135deg, #2C3E50 0%, #4facfe 80%, #00f2fe 100%) !important;
             box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3)!important;
         }
@@ -1275,7 +1244,7 @@ fetchFaqData();
         .finding:nth-child(3n) {
             background:linear-gradient(135deg, #2C3E50 0%, #4facfe 80%, #00f2fe 100%) !important;
             box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3)!important;
-        }
+        }*/
         
         /*.finding:hover {
             transform: translateX(10px)!important;
@@ -1942,6 +1911,16 @@ display: flex;
 .product-image-img {
   max-width: 100%!important;
   height: auto!important;
+}
+
+.finding-1 {
+ color: black!important;
+}
+.why-choose-section .icon {
+    font-size: 1.2rem !important;
+}
+.row-intro {
+    width: 100%!important;
 }
 
   </style>
