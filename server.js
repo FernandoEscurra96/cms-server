@@ -427,7 +427,7 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
         $findings.append(`<h2 class="findings-title">${findings.title}</h2>`);
         findings.key_findings.forEach(text => {
             $findings.append(`
-                <div class="finding">
+                <div class="finding-1">
                     <div class="finding-text">${text}</div>
                 </div>
             `);
