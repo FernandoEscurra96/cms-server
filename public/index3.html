@@ -97,7 +97,7 @@ fetchProduct();
     width: 100% !important;
     min-height: 100vh !important;
     /*background: rgba(255, 255, 255, 0.05) !important;*/
-    background: #2C3E50!important;
+    /*background: #2C3E50!important;*/
     backdrop-filter: blur(10px) !important;
     border: 1px solid rgba(255, 255, 255, 0.1) !important;
     position: relative !important;
@@ -105,6 +105,9 @@ fetchProduct();
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
     /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;*/
     min-height: 100vh !important;
+}
+.product-container h1 {
+    color: #2C3E50!important;
 }
 
 /*.product-container {
@@ -243,20 +246,23 @@ fetchProduct();
     align-items: baseline !important;
     gap: 1.5rem !important;
     margin-bottom: 3rem !important;
+    color: #2C3E50!important;
 }
 
 .price-original {
-    color: rgba(255, 255, 255, 0.6) !important;
+    /*color: rgba(255, 255, 255, 0.6) !important;*/
     text-decoration: line-through !important;
     font-size: 2rem !important;
     font-weight: 400 !important;
+    color: #2C3E50!important;
 }
 
 .price-current {
-    color: white !important;
+    /*color: white !important;*/
     font-size: 4.5rem !important;
     font-weight: 900 !important;
     text-shadow: 0 5px 20px rgba(0, 0, 0, 0.3) !important;
+    color: #2C3E50!important;
 }
 
 .price-discount {
@@ -323,8 +329,8 @@ fetchProduct();
     flex: 1 !important;
     padding: 1.5rem 2rem !important;
     background: transparent !important;
-    color: white !important;
-    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    /*color: white !important;*/
+    border: 2px solid black !important;
     border-radius: 60px !important;
     font-size: 1.2rem !important;
     font-weight: 600 !important;
@@ -332,6 +338,7 @@ fetchProduct();
     transition: all 0.3s ease !important;
     text-transform: uppercase !important;
     letter-spacing: 1px !important;
+    color: #2C3E50!important;
 }
 
 .secondary-button:hover {
@@ -394,6 +401,7 @@ fetchProduct();
 
     .price-current {
         font-size: 3.5rem !important;
+        color: #2C3E50!important;
     }
 
     .product-actions {
@@ -480,19 +488,18 @@ fetchProduct();
 			<div class="container">
 				<div class="row justify-content-between align-items-center">
 					<div class="col-lg-6">
-						<h2 class="section-title-into">¿Por qué Horeca te recomienda este producto?</h2>
-						<p>Precios competitivos: ofertas y descuentos frecuentes que te ayudan a ahorrar</p>
-						<div class="row my-5">
+						<h2 class="section-title-into">¿Por qué HorecaRentable te recomienda este producto?</h2>
+						<div class="row">
                 <div id="introduction-text" class="introduction-text">
                     
                 </div></div>
 
                 <div class="row my-5 buttons-container">
                     <a href="#introduction">
-                        <button class="btn-comprar"><span class="icon">🛒</span> Comprar YA</button>
+                        <button class="buy-button"><span class="icon buy">🛒</span> Comprar YA</button>
                     </a>
                     <a href="#introduction">
-                        <button class="btn-info"><span class="icon">ℹ️</span> Más Info</button>
+                        <button class="btn-info"><span class="icon buy">ℹ️</span> Más Info</button>
                     </a>
                 </div>
 					</div>
@@ -1640,9 +1647,11 @@ fetchFaqData();
 
 
 .why-choose-section {
-  padding: 7rem 0!important; 
-  padding: 10rem 12rem !important;
+  /*padding: 7rem 0!important; 
+  padding: 10rem 12rem !important;*/
   background: #eff2f1!important;
+  padding-top: 2rem!important;
+  padding-bottom: 2rem!important;
 }
   .why-choose-section .img-wrap {
     position: relative!important; }
@@ -1914,7 +1923,7 @@ display: flex;
     .why-choose-section h2 {
       font-size: 3rem !important;
       font-weight: 700 !important;
-      margin-bottom: 3rem !important;
+      /*margin-bottom: 3rem !important;*/
       text-align: center !important;
       /*color: var(--dark-color) !important;*/
       color: black !important;
@@ -1944,6 +1953,12 @@ display: flex;
     font-size: 1.2rem !important;
     padding-left: 20px!important;
 }
+
+.why-choose-section .buy{
+    font-size: 1.2rem !important;
+    padding-left: 0px !important;
+}
+
 .row-intro {
     width: 100%!important;
 }

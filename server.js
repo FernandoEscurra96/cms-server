@@ -291,7 +291,7 @@ app.post('/api/competitors', (req, res) => {
 let faqData = {
     
       "productData": {
-        "category": "kitchen",
+        "category": "Cocina",
         "title": "Utopia Bedding: Protector Colchón Impermeable y Transpirable",
         "description": "1 Experimenta el futuro en tus manos con el smartphone más avanzado. Chip A17 Pro revolucionario, sistema de cámaras profesional de 48MP y pantalla Super Retina XDR de 6.7 pulgadas que redefine la excelencia.",
         "priceOriginal": "$1,299",
