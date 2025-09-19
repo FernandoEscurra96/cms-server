@@ -435,7 +435,8 @@ app.get('/api/html3', (req, res) => {
 
         // 3. Cargar HTML en Cheerio
         const $ = cheerio.load(html);
-        
+   
+let  productData = faqData.productData;
 const $category = $('.product-category');
 $category.text(productData.category);
 
@@ -461,6 +462,7 @@ const $img = $productImageDiv.find('img');
 $img.attr('src', productData.image);       // URL de la imagen
 console.log("productData.image");
 console.log(productData.image);
+console.log(productData.priceDiscount);
 //$img.attr('alt', productData.title);      
 // Reemplazar botón por enlace
 const $buyButton = $('.buy-button');
