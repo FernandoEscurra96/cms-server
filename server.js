@@ -296,13 +296,13 @@ let faqData = {
         "description": "1 Experimenta el futuro en tus manos con el smartphone más avanzado. Chip A17 Pro revolucionario, sistema de cámaras profesional de 48MP y pantalla Super Retina XDR de 6.7 pulgadas que redefine la excelencia.",
         "priceOriginal": "$1,299",
         "priceCurrent": "$1,199",
-        "priceDiscount": "8%",
+        "priceDiscount": "10%",
         "buyLink": "https://www.amazon.es/dp/B077T9VNSB/?tag=horecarentabl-21",
         "image": "https://images-eu.ssl-images-amazon.com/images/I/71e7b+OmvbL._AC_UL900_SR900,600_.jpg"
 
     },
     "introduction":{"title":"Utopia Bedding: Protector Colchón Impermeable y Transpirable","subtitle":"''El protector de colchón Utopia Bedding 135 x 190 x 40 cm es uno de los favoritos para quienes buscan protección sin renunciar a la comodidad. Destaca por su impermeabilidad, certificación Oeko-Tex y excelente ajuste. Analizamos a fondo sus características, resultados y lo comparamos con rivales para guiarte en tu compra. \n \nCEO Marketing Horecarentable''","ctaText":"Comprar Ahora","ctaLink":"https://www.amazon.es/dp/B077T9VNSB/?tag=horecarentabl-21",
-    "image": "https://m.media-amazon.com/images/I/81PMIW46YHL._AC_SX679_.jpg"},"title":"Preguntas Frecuentes",
+    "image": "https://images-eu.ssl-images-amazon.com/images/I/71e7b+OmvbL._AC_UL900_SR900,600_.jpg"},"title":"Preguntas Frecuentes",
     "faqs":[
 {
       "question": "¿El protector de Utopia Bedding es 100% impermeable?",
@@ -333,7 +333,7 @@ let faqData = {
       "answer": "No, gracias al diseño y al tipo de membrana, es uno de los protectores más silenciosos del mercado."
     }],
     "pricing":
-    {"title":"Caracteristica Únicas","price":"$4","subtitle":"Pago único - Valor de por vida",
+    {"title":"Características Únicas","price":"$4","subtitle":"Pago único - Valor de por vida",
     "unique_features":["Certificación Oeko-Tex: Esta funda de colchón cuenta con uno de los certificados más reconocidos del mundo textil, asegurando que ninguno de sus materiales contiene químicos peligrosos o tóxicos, lo cual es fundamental para personas alérgicas, con piel sensible, bebés o personas mayores.",
       "Impermeabilidad total y discreta: Muchos protectores prometen resistencia frente a líquidos pero fallan en la práctica. Utopia Bedding implementa una membrana de poliuretano ultra delgada e invisible, que ha demostrado mantener el colchón completamente seco en todo tipo de situaciones, desde accidentes infantiles, mascotas, derrames accidentales y sudor abundante. A diferencia de fundas vinílicas, la sensación al tacto es similar al algodón normal, sin efectos plastificados.",
       "Adaptabilidad universal: El diseño con esquinas de 40 cm permite instalar el protector en colchones gruesos, modelos con topper o combinados. No importa si el colchón es viscoelástico, de muelles o espuma: el ajuste es perfecto y la goma perimetral de alta calidad mantiene todo en su lugar, evitando movimientos indeseados y pliegues que puedan incomodar durante la noche.",
@@ -459,6 +459,8 @@ const $img = $productImageDiv.find('img');
 
 // Cambiar src y alt
 $img.attr('src', productData.image);       // URL de la imagen
+console.log("productData.image");
+console.log(productData.image);
 //$img.attr('alt', productData.title);      
 // Reemplazar botón por enlace
 const $buyButton = $('.buy-button');
@@ -536,12 +538,12 @@ $buyButton.replaceWith(`<a href="${productData.buyLink}" class="buy-button">Comp
         // Renderizar Conclusion
         // ==============================
         const conclusion = faqData.conclusion;
-        const $conclusion = $('.Conclusion-content');
-        $conclusion.find('.Conclusion-title').text(conclusion.title);
+        const $conclusion = $('.why-choose-section');
+        $conclusion.find('.section-title-conclusion').text(conclusion.title);
 
         const paragraphs = conclusion.text.split('\n').filter(p => p.trim() !== '');
-        const conclHtml = paragraphs.map(p => `<div class="Conclusion-text">${p.trim()}</div>`).join('');
-        $conclusion.find('.Conclusion-text').html(conclHtml);
+        const conclHtml = paragraphs.map(p => `<div class="conclusion-text">${p.trim()}</div>`).join('');
+        $conclusion.find('.conclusion-text').html(conclHtml);
 
         // ==============================
         // Renderizar Errors
