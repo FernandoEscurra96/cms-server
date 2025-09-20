@@ -192,3 +192,89 @@
             </div>
         </div>
     </div>-->
+
+
+
+      <!--<section id="introduction" class="introduction">
+      <div class="introduction-content">
+          <h2></h2><div class="container-introduction"><div id="introduction-text" class="introduction-text">
+            <span class="floating-badge">Premium</span></div><div class="introduction-image">
+                <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758064307/Generated_Image_September_16_2025_-_7_38PM_1_ynhseo.png" alt="Imagen de ejemplo">
+            </div></div><div><a href="#productos" class="cta-button"></a><a href="#introduction"><button class="">Más Info</button></a></div>
+      </div>
+  </section>-->
+
+
+    <!--<section id="Conclusion" class="conclusion">
+      <div class="conclusion-content">
+          <h2></h2><div class="container-conclusion"><div id="conclusion-text" class="conclusion-text">
+            <span class="floating-badge">Premium</span>
+        <div class="Conclusion-content">
+    <h2 class="Conclusion-title">Conclusion</h2>
+    
+    <div class="Conclusion">
+        <div class="Conclusion-text">
+            
+        </div>
+    </div>
+</div></div><div class="introduction-image">
+               <div class="container">
+    <div class="carousel-vertical">
+  <div class="carousel-track">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 2">
+  </div>
+</div>
+</div>-->
+
+
+
+<!--<div class="countdown">
+  <div class="time-box">
+    <span class="hours">24</span>
+    <small>Horas</small>
+  </div>
+  <div class="time-box">
+    <span class="minutes">00</span>
+    <small>Minutos</small>
+  </div>
+  <div class="time-box">
+    <span class="seconds">00</span>
+    <small>Segundos</small>
+  </div>
+</div>-->
+
+
+<!--<div class="container">
+    <div class="carousel-vertical">
+  <div class="carousel-track">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 1">
+    <img src="https://res.cloudinary.com/dqgld1gyl/image/upload/v1758079945/testimonios_11_og53sn.png" alt="Imagen 2">
+
+    
+  </div>
+
+</div>
+
+
+  <div class="shine"></div>
+</div>-->
+
+
+
+    /* introduction Section */
+        /*.introduction {
+            height: 100vh!important;
+            display: flex!important;
+            align-items: center!important;
+            justify-content: center!important;
+            text-align: center!important;
+            position: relative!important;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden!important;
+        }*/
+
+        /*.introduction {
+            padding: 120px 0!important;
+            background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);
+        }*/
